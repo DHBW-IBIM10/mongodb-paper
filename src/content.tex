@@ -1,0 +1,177 @@
+\title{\papertitle}
+
+\author{Rocco Schulz and Robert Wawrzyniak}
+		
+\publishers{Corporate State University\\Baden-Wuerttemberg - Stuttgart}
+
+\date{
+\vspace{0.6cm}
+provided on 6 May 2013\\
+\vspace{0.6cm}
+School of: Business\\
+\vspace{0.6cm}
+Program: International Business Information Management\\
+\vspace{0.6cm}
+Course: WWI2010I\\
+\vspace{0.6cm}
+}
+
+
+
+
+
+% DOCUMENT
+\renewcommand{\baselinestretch}{1.5}\normalsize
+\begin{document}
+\pagestyle{scrheadings}
+
+% roman numerals
+\renewcommand{\thepage}{\Roman{page}}
+% page numbers centered on top:
+\chead{\pagemark}
+\cfoot{}
+
+%----------------------------------------------------------------------------
+% Title Page
+%----------------------------------------------------------------------------
+
+% no page numbering
+\thispagestyle{empty}
+% include title page
+\input{title_page}
+
+
+%  \begin{abstract}
+%  \vspace{1.6cm}
+% % \textbf{\abstractname}: 
+%  \end{abstract}
+
+
+%----------------------------------------------------------------------------
+% Table of Contents
+%----------------------------------------------------------------------------
+\tableofcontents
+\newpage
+
+
+%----------------------------------------------------------------------------
+% Abbreviations
+%----------------------------------------------------------------------------
+% List needs to be indexed after each change.
+% This is done by executing the following command:
+% ~$ makeindex [filename].nlo -s nomencl.ist -o [filename].nls
+\printnomenclature
+\addcontentsline{toc}{section}{List of Abbreviations}
+\input{nomenclature.tex}
+
+\newpage
+
+%----------------------------------------------------------------------------
+% List Of Tables
+%----------------------------------------------------------------------------
+\listoftables
+\addcontentsline{toc}{section}{\listtablename}
+\newpage
+
+
+%----------------------------------------------------------------------------
+% List of Figures
+%----------------------------------------------------------------------------
+\listoffigures
+\addcontentsline{toc}{section}{\listfigurename}
+\newpage
+
+%----------------------------------------------------------------------------
+% List of Listings
+%----------------------------------------------------------------------------
+%\lstlistoflistings
+\listoflistings
+\addcontentsline{toc}{section}{List of Listings}
+\newpage
+
+% Arabic numerals for page numbering
+\renewcommand{\thepage}{\arabic{page}}
+
+% Set page number to 1: 
+\setcounter{page}{1} 
+
+
+%----------------------------------------------------------------------------
+% Intro
+%----------------------------------------------------------------------------
+\section{Introduction}
+\label{sec:introduction}
+
+Introduction to NoSQL.
+
+
+\subsection{Objectives}
+\label{sec:objectives}
+%SMART - specific, measurable, achievable, relevant, timed
+
+\begin{enumerate}
+  \item Test installation of mongoDB
+  \item Introduce basic usage (CRUD + simple analytics)
+  \item Performance tests with large datasets
+  \item Show programmatical usage of mongoDB in a Python web project
+\end{enumerate}
+
+\subsection{Methodology and Structure}
+\label{sec:objectives}
+
+TBD
+
+
+%----------------------------------------------------------------------------
+% Theoretical Foundation
+%----------------------------------------------------------------------------
+
+\newpage
+
+
+%----------------------------------------------------------------------------
+% Hands on Mongo
+%----------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------
+% Closing
+%----------------------------------------------------------------------------
+
+\newpage
+\section{Conclusion and Outlook}
+\label{sec:conclusion}
+
+
+%----------------------------------------------------------------------------
+% APPENDIX
+%----------------------------------------------------------------------------
+% Appendix sections need to be within the subappendices environment.
+% Use the command \appsection{title} instead of \section to introduce each
+% appendix. This will add each appendix to the list of appendices.
+
+% sets the appendix environment and resets the section counters
+\newpage \begin{appendices} 
+\appendixtocon %adds an 'Appendices' entry to the toc
+
+\appendixpage %prints the title on the page
+
+\subsection*{\listappendixname}
+%--------------------------------
+% style of the \listofappendices command is defined in header.tex
+\listofappendices
+
+% begin appendices on a new page
+\newpage
+
+%start environment for subappendices, so that new sections are formatted as
+%subsections of appendix
+\begin{subappendices}
+\renewcommand{\setthesubsection}{\arabic{subsection}:}%
+
+\appsection{Some Source Code}
+\label{apx:placeholder}
+
+% close the appendices environment
+\end{subappendices}
+\end{appendices}

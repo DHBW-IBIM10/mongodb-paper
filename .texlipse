@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Mon May 06 20:14:32 CEST 2013
+markTmpDer=true
+builderNum=2
+outputDir=build/
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=seminar_paper.tex
+outputFile=seminar-paper-mongodb.pdf
+langSpell=en
+markDer=true
+srcDir=src/
