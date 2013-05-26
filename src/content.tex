@@ -125,13 +125,101 @@ TBD
 %----------------------------------------------------------------------------
 % Theoretical Foundation
 %----------------------------------------------------------------------------
-
 \newpage
 
+\section{Foundation}
+\label{sec:foundation}
+
+\subsection{NoSQL}
+\label{sec:nosql}
+
+\begin{enumerate}
+  \item nosql describes a range of data store technologies that do not have an sql interface
+  \item there are multiple types of nosql data stores:
+  \item graph oriented
+  \item hierarchical
+  \item key-value
+  \item document stores
+\end{enumerate}
+    
+
+Main differences between RDBS and noSQL should be listed to avoid that readers
+look at things as if they were conventional databases. they are not.
+
+\subsection{MongoDB}
+\label{sec:mongodb}
+
+\begin{enumerate}
+  \item  noSQL store that belongs to the group of document stores
+  \item Documents are stored as JSON or binary JSON
+  \item development history and some general information
+  \item use cases
+\end{enumerate}    
+
+    
+    
 
 %----------------------------------------------------------------------------
 % Hands on Mongo
 %----------------------------------------------------------------------------
+\section{Setting up MongoDB}
+\label{sec:setup}
+
+\subsection{Installation}
+\label{sec:installation}
+
+\subsubsection{Windows}
+\label{sec:installation-windows}
+Download and follow install instructions.
+
+\subsubsection{Linux}
+\label{sec:installation-linux}
+Use your favorite package manager.
+
+\subsection{Configuration}
+\label{sec:configuration}
+
+\begin{enumerate}
+  \item basic configuration of the service (ports, memory usage, etc)
+  \item advanced: sharding, performance optimization, indexing
+  \item advanced: distribution among several network nodes
+\end{enumerate}
+    
+\section{Using MongoDB}
+\label{sec:usage}
+
+\subsection{Command Line Interface}
+\label{sec:usage-cli}
+CRUD operations\\
+complex queries
+
+\subsection{Programmatically}
+\label{sec:usage-programmatically}
+\begin{enumerate}
+  \item Using MongoDB as a module of a application is probably the most common usage scenario
+  \item Interfaces for a large number of programming languages exist
+  \item Some basic operations can be shown in Ruby, Java, Python, JavaScript
+\end{enumerate}
+
+
+
+\subsection{Graphical Interfaces}
+\label{sec:usage-gui}
+there are UI based admin tools by 3rd party developers\\
+show a small selection of them
+
+\section{Maintaining MongoDB}
+\label{sec:maintenance}
+
+\subsection{Monitoring}
+\label{sec:maintenance-monitroing}
+Can be done manually via the CLI
+Monitoring tools for automation are included in the default installation
+
+\subsection{Updating}
+\label{sec:maintenance-updating}
+TODO
+
 
 
 %----------------------------------------------------------------------------
@@ -141,6 +229,10 @@ TBD
 \newpage
 \section{Conclusion and Outlook}
 \label{sec:conclusion}
+
+MongoDB should not be seen as an alternative for conventional RDBS but as a
+complementary module in application development.\\
+TODO.
 
 
 %----------------------------------------------------------------------------
