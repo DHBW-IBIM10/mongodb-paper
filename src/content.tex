@@ -104,6 +104,11 @@ Course: WWI2010I\\
 
 Introduction to NoSQL.
 
+% These\footcite[Cf.][22]{Warden_2011} are\footcite[Cf.][23]{Tiwari_2011} just some
+% dummy\footcite[Cf.][34]{Redmond_2012} references\footcite[][]{Chodorow_2011_tips}
+% to test\footcite[Cf.][44]{Chodorow_2011_scaling} the bibliography\footcite[Cf.][44]{Ohiggins_2011}
+% environement.\footcite[Cf.][]{mongo_manual}
+
 
 \subsection{Objectives}
 \label{sec:objectives}
@@ -117,7 +122,7 @@ Introduction to NoSQL.
 \end{enumerate}
 
 \subsection{Methodology and Structure}
-\label{sec:objectives}
+\label{sec:methodology}
 
 TBD
 
@@ -130,24 +135,84 @@ TBD
 \section{Foundation}
 \label{sec:foundation}
 
-\subsection{NoSQL}
+
+
+\subsection{NoSQL Databases}
 \label{sec:nosql}
 
 \begin{enumerate}
   \item nosql describes a range of data store technologies that do not have an sql interface
-  \item there are multiple types of nosql data stores:
-  \item graph oriented
-  \item hierarchical
-  \item key-value
-  \item document stores
+  \item there are multiple types of nosql data stores, these are briefly introduced in the following sections
 \end{enumerate}
-    
-
 Main differences between RDBS and noSQL should be listed to avoid that readers
 look at things as if they were conventional databases. they are not.
 
+\paragraph{Key-Value Stores}
+\label{sec:nosql-key-value}
+As the name implies a key-value store maps keys to values in a similar way as a
+map or hashtable would in a high level programming
+language.\footcite[Cf.][4]{Redmond_2012} Such data structures are very efficient
+with an average algorithm running time of big O(1) for accessing data and
+are hence often used for caching of data.\footcite[Cf.][p. 14 et sq.]{Tiwari_2011}
+However they are not very useful when it is necessary to do queries that are
+more complex than simply looking up a value for a given key.\\
+There are various open source projects available, whereas memcached, Voldemort,
+Redis and Riak belong to the more popular ones.\footcite[Cf.][4]{Redmond_2012}
+
+ 
+\paragraph{Document-Oriented Databases}
+\label{sec:nosql-document}
+
+``Document-oriented databases store, well, documents. In short, a document
+is like a hash, with a unique ID field and values that may be any of a variety
+of types, including more hashes. Documents can contain nested structures,
+and so they exhibit a high degree of flexibility, allowing for variable domains.
+The system imposes few restrictions on incoming data, as long as it meets
+the basic requirement of being expressible as a document. Different document
+databases take different approaches with respect to indexing, ad hoc querying,
+replication, consistency, and other design decisions. Choosing wisely between
+them requires understanding these differences and how they impact your
+particular use cases.
+The two major open source players in the document database market are
+MongoDB''\footcite[Cf.][p. 5 et sq.]{Redmond_2012}
+
+``Document databases are not document management systems. More often than not, developers
+starting out with NoSQL confuse document databases with document and content management
+systems. The word document in document databases connotes loosely structured sets of key/
+value pairs in documents, typically JSON (JavaScript Object Notation), and not documents or
+spreadsheets (though these could be stored too).
+Document databases treat a document as a whole and avoid splitting a document into its constituent
+name/value pairs. At a collection level, this allows for putting together a diverse set of documents
+into a single collection. Document databases allow indexing of documents on the basis of not only
+its primary identifier but also its properties. A few different open-source document databases are
+available today but the most prominent among the available options are MongoDB and CouchDB."\footcite[Cf.][p. 18 et sq.]{Tiwari_2011}
+
+\paragraph{Graph Databases}
+\label{sec:nosql-graph}
+``One of the less commonly used database styles, graph databases excel at
+dealing with highly interconnected data. A graph database consists of nodes
+and relationships between nodes. Both nodes and relationships can have
+properties—key-value pairs—that store data. The real strength of graph
+databases is traversing through the nodes by following relationships.''\footcite[Cf.][6]{Redmond_2012}
+
+``So far I have listed most of the mainstream open-source NoSQL products. A few other products like
+Graph databases and XML data stores could also qualify as NoSQL databases. This book does not
+cover Graph and XML databases. However, I list the two Graph databases that may be of interest
+and something you may want to explore beyond this book: Neo4j and FlockDB:
+Neo4J is an ACID-compliant graph database. It facilitates rapid traversal of graphs.''\footcite[Cf.][19]{Tiwari_2011}
+
 \subsection{MongoDB}
 \label{sec:mongodb}
+
+
+``MongoDB is designed to be huge (the name mongo is extracted from the word
+humongous). Mongo server configurations attempt to remain consistent—if
+you write something, subsequent reads will receive the same value (until the
+next update). This feature makes it attractive to those coming from an RDBMS
+background. It also offers atomic read-write operations such as incrementing
+a value and deep querying of nested document structures. Using JavaScript
+for its query language, MongoDB supports both simple queries and complex
+mapreduce jobs.''\footcite[Cf.][6]{Redmond_2012}
 
 \begin{enumerate}
   \item  noSQL store that belongs to the group of document stores
