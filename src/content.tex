@@ -160,46 +160,34 @@ There are various open source projects available, whereas memcached, Voldemort,
 Redis and Riak belong to the more popular ones.\footcite[Cf.][4]{Redmond_2012}
 
  
-\paragraph{Document-Oriented Databases}
+\paragraph{Document Oriented Databases}
 \label{sec:nosql-document}
+Document oriented databases store documents which can contain a variety of
+values which may be of any type, including sub-documents, so that nested 
+structures can be created.\footcite[Cf.][p. 5 et sq.]{Redmond_2012}\\
+These databases should not be confused with document management systems. Even
+though binary documents can be stored as well, the word document in this context
+refers to a structured set of keys and values that belong to a
+document.\footcite[Cf.][p. 18 et sq.]{Tiwari_2011}.\\
+Multiple documents form collections which can be queried. Document oriented
+databases do not have a fixed schema and hence exhibit high flexibility.
 
-``Document-oriented databases store, well, documents. In short, a document
-is like a hash, with a unique ID field and values that may be any of a variety
-of types, including more hashes. Documents can contain nested structures,
-and so they exhibit a high degree of flexibility, allowing for variable domains.
-The system imposes few restrictions on incoming data, as long as it meets
-the basic requirement of being expressible as a document. Different document
-databases take different approaches with respect to indexing, ad hoc querying,
-replication, consistency, and other design decisions. Choosing wisely between
-them requires understanding these differences and how they impact your
-particular use cases.
-The two major open source players in the document database market are
-MongoDB''\footcite[Cf.][p. 5 et sq.]{Redmond_2012}
+Document oriented databases are not a new phenomenom as they have been around
+for a few decades already. However recently a number of new open source document 
+oriented databases like MongoDB and CouchDB have quickly become popular.\footcite[Cf.][p. 18 et sq.]{Tiwari_2011}
 
-``Document databases are not document management systems. More often than not, developers
-starting out with NoSQL confuse document databases with document and content management
-systems. The word document in document databases connotes loosely structured sets of key/
-value pairs in documents, typically JSON (JavaScript Object Notation), and not documents or
-spreadsheets (though these could be stored too).
-Document databases treat a document as a whole and avoid splitting a document into its constituent
-name/value pairs. At a collection level, this allows for putting together a diverse set of documents
-into a single collection. Document databases allow indexing of documents on the basis of not only
-its primary identifier but also its properties. A few different open-source document databases are
-available today but the most prominent among the available options are MongoDB and CouchDB."\footcite[Cf.][p. 18 et sq.]{Tiwari_2011}
 
 \paragraph{Graph Databases}
 \label{sec:nosql-graph}
-``One of the less commonly used database styles, graph databases excel at
-dealing with highly interconnected data. A graph database consists of nodes
-and relationships between nodes. Both nodes and relationships can have
-properties—key-value pairs—that store data. The real strength of graph
-databases is traversing through the nodes by following relationships.''\footcite[Cf.][6]{Redmond_2012}
+Graph databases are an excellent choice when dealing with highly interconnected
+data. They consist of multiple nodes and relationships between these nodes.
+Nodes as well as their relationships can contain additional information in the
+form of key-value pairs.\footcite[Cf.][6]{Redmond_2012}\\
+Graph databases facilitate rapid traversal through graphs by following
+relationships. Well known representatives of this group of noSQL databases are
+Neo4j\footnote{See \url{http://www.neo4j.org/}} and FlockDB\footnote{See
+\url{https://github.com/twitter/flockdb}}.\footcite[Cf.][19]{Tiwari_2011}
 
-``So far I have listed most of the mainstream open-source NoSQL products. A few other products like
-Graph databases and XML data stores could also qualify as NoSQL databases. This book does not
-cover Graph and XML databases. However, I list the two Graph databases that may be of interest
-and something you may want to explore beyond this book: Neo4j and FlockDB:
-Neo4J is an ACID-compliant graph database. It facilitates rapid traversal of graphs.''\footcite[Cf.][19]{Tiwari_2011}
 
 \subsection{MongoDB}
 \label{sec:mongodb}
@@ -212,7 +200,7 @@ next update). This feature makes it attractive to those coming from an RDBMS
 background. It also offers atomic read-write operations such as incrementing
 a value and deep querying of nested document structures. Using JavaScript
 for its query language, MongoDB supports both simple queries and complex
-mapreduce jobs.''\footcite[Cf.][6]{Redmond_2012}
+mapreduce jobs.''\footcite[][6]{Redmond_2012}
 
 \begin{enumerate}
   \item  noSQL store that belongs to the group of document stores
