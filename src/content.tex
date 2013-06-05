@@ -1,7 +1,7 @@
 \title{\papertitle}
 
 \author{Rocco Schulz and Robert Wawrzyniak}
-		
+	
 \publishers{Corporate State University\\Baden-Wuerttemberg - Stuttgart}
 
 \date{
@@ -150,13 +150,27 @@ look at things as if they were conventional databases. they are not.
 \label{sec:mongodb}
 
 \begin{enumerate}
-  \item  noSQL store that belongs to the group of document stores
+  \item noSQL store that belongs to the group of document stores
   \item Documents are stored as JSON or binary JSON
   \item development history and some general information
   \item use cases
-\end{enumerate}    
+\end{enumerate}
 
-    
+
+MongoDB belongs to the group of document oriented noSQL databases and is written
+in C++. It does not try to be a general purpose database but has been developed
+with the philosophy ``One size does not fit all'' in mind.\footcite[Cf.][3]{Plugge_2010}
+
+MongoDB works with documents instead of tables as opposed to conventional RDBMS.
+A document is a single storage unit and multiple documents can be contained in a
+collection. Documents are stored in BSON format which is a JSON based
+specification.\footcite[Cf.][]{bson_spec}
+
+A design goal of MongoDB is high availability through
+replication.\footcite[Cf.][3]{Plugge_2010}
+MongoDB aims for good horizontal scalability, speed and simplicity. Transaction
+support has been ommitted as a tradeoff in favor of these
+attributes.\footcite[Cf.][5]{Plugge_2010}
     
 
 %----------------------------------------------------------------------------
@@ -190,8 +204,32 @@ Use your favorite package manager.
 
 \subsection{Command Line Interface}
 \label{sec:usage-cli}
-CRUD operations\\
-complex queries
+
+\subsubsection{Read}
+
+\paragraph{Making Queries}
+In the mongo shell, the \texttt{find()} and \texttt{findOne()} can be used to
+query for data.\footcite[Cf.][7]{mongo_crud_manual}
+
+\paragraph{Optimizing Queries}
+Can be optimized with indexes and some other tips given in
+iterature.\footcite[Cf.][TODO]{Chodorow_2011_tips}
+
+
+\subsubsection{Create}
+Documents can be created with the \texttt{insert()} command in the mongo
+shell.\\
+Bulk inserts are also possible.\footcite[Cf.][p. 53 et sqq.]{mongo_crd_manual}
+
+\subsubsection{Update}
+Updates can be done with the \texttt{update()} command and the \texttt{save()}
+command.\footcite[Cf.][p. 75 et. sqq.]{mongo_crud_manual}
+
+\subsubsection{Delete}
+Delete operations for one or multiple documents can be performed with
+\texttt{db.collection.remove()}.\footcite[Cf.][p. 83 et.
+sqq.]{mongo_crud_manual}
+
 
 \subsection{Programmatically}
 \label{sec:usage-programmatically}
@@ -200,7 +238,6 @@ complex queries
   \item Interfaces for a large number of programming languages exist
   \item Some basic operations can be shown in Ruby, Java, Python, JavaScript
 \end{enumerate}
-
 
 
 \subsection{Graphical Interfaces}
