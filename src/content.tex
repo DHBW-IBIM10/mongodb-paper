@@ -224,6 +224,35 @@ replication.\footcite[Cf.][3]{Plugge_2010}
 MongoDB aims for good horizontal scalability, speed and simplicity. Transaction
 support has been ommitted as a tradeoff in favor of these
 attributes.\footcite[Cf.][5]{Plugge_2010}
+
+\begin{savenotes} %alloows proper citation marks inside tables
+\begin{table}[ht]
+\begin{tabular*}{0.7\textwidth}{p{0.35\textwidth} p{0.35\textwidth}}
+\toprule
+\textbf{SQL Terms/Concepts} & \textbf{MongoDB Terms/Concept}\\
+\midrule 
+database & 	database\\
+table 	 &	collection\\
+row 	 &	document or BSON document\\
+column 	 &	field\\
+index 	 &	index\\
+table joins &	embedded documents and linking\\
+primary key\newline Specify any unique column or column combination as primary
+key.
+		&
+primary key \newline
+
+In MongoDB, the primary key is automatically set to the \_id field.\\
+
+\bottomrule 
+\end{tabular*}
+  \caption{SQL termn mapped to MongoDB source:
+  \url{http://docs.mongodb.org/manual/reference/sql-comparison/}}
+  \label{tab:sql-mongo-map}
+\end{table}
+\end{savenotes}
+
+
     
 
 %----------------------------------------------------------------------------
