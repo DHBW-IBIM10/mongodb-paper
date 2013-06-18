@@ -271,6 +271,9 @@ Download and follow install instructions.
 \subsubsection{Linux}
 \label{sec:installation-linux}
 Use your favorite package manager.
+Most distributions do not ship the latest version of MongoDB. This paper describes the usage of
+MongoDB version 2.4 which can be obtained from 10gens own repository if not available in the
+Linux distribution. See \url{http://docs.mongodb.org/manual/installation/}
 
 \subsection{Configuration}
 \label{sec:configuration}
@@ -284,8 +287,45 @@ Use your favorite package manager.
 \section{Using MongoDB}
 \label{sec:usage}
 
+\subsection{Test Environment Setup}
+\label{sec:test-environment}
+
+The following usage scenarios will be based on a publicly available dataset.
+This section describes how to obtain and load this dataset into the previously
+installed MongoDB.
+
+The Enron Email Corpus has been ported to MongoDB and can be obtained from
+\url{http://mongodb-enron-email.s3-website-us-east-1.amazonaws.com/}.
+The uncompressed dataset contains approximately 500,000 emails.
+While this is a relatively small dataset it is sufficient for
+testing basic features of the database.
+
+Once the archive has been downloaded and unpacked it can be loaded into MongoDB
+by using the command line tool
+\texttt{mongorestore}.\footcite[Cf.][TODO]{http://docs.mongodb.org/manual/reference/program/mongorestore/}
+ On Linux, run the commands as shown in Lst. \ref{lst:load-enron}.
+
+\begin{listing}
+    \begin{bashcode}
+    wget https://s3.amazonaws.com/mongodb-enron-email/enron_mongo.tar.bz2
+    tar -xjvf enron_mongo.tar.bz2
+    mongorestore --db enron --noobjcheck dump/enron_mail/
+    \end{bashcode}
+    \caption{Shell commands to download and load the enron email corpus into MongoDB on Linux}
+    \label{lst:load-enron}
+\end{listing}
+
+Note that the loading process requires a running instance of the mongo server.
+Verify that the import was successful by opening the mongo shell and typing
+\texttt{show dbs}.
+The output should contain a row with \texttt{enron 3.9521484375GB}\footnote{The
+size of the database may differ due to different file systems}, which is the
+database that has been created during the loading process.
+
+
 \subsection{Command Line Interface}
 \label{sec:usage-cli}
+
 
 \subsubsection{Read}
 
