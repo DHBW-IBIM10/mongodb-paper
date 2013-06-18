@@ -355,8 +355,69 @@ These queries are performed by calling them on any collection.
 Obtaining all emails from the messages collection is e.g. done by running
 \texttt{db.messages.find()}.
 
+The syntax of the find command is as follows: \texttt{db.collection.find(
+<query>, <projection> )}\\
+The <query> argument is used for filtering and the <projection> is used to specify
+or limit the fields that should be returned.
+The projection is hence comparable to the SELECT part of an SQL query and the
+query parameter is combarable to the WHERE clause of an SQL query.
 
-\texttt{db.messages.find({"headers.From": "luis.mena@enron.com"}).limit(10).pretty()}
+
+The \texttt{findOne()} method is very similar, however it only returns the first
+element that matches the query. Lst. \ref{lst:findone} shows the result of the
+findOne query on the messages collection without a query document provided. The
+second argument tells MongoDB to exclude the body field from the result. Setting
+the projection object to \texttt{\{"subject":1\}} would tell MongoDB to exclude
+all fields from the result except for body.
+
+\begin{listing}
+    \begin{javascriptcode}
+> db.messages.findOne({}, {"body": 0})
+{
+    "_id" : ObjectId("4f16fc97d1e2d32371003e27"),
+    "subFolder" : "notes_inbox",
+    "mailbox" : "bass-e",
+    "filename" : "450.",
+    "headers" : {
+        "X-cc" : "",
+        "From" : "michael.simmons@enron.com",
+        "Subject" : "Re: Plays and other information",
+        "X-Folder" : "\\Eric_Bass_Dec2000\\Notes Folders\\Notes inbox",
+        "Content-Transfer-Encoding" : "7bit",
+        "X-bcc" : "",
+        "To" : "eric.bass@enron.com",
+        "X-Origin" : "Bass-E",
+        "X-FileName" : "ebass.nsf",
+        "X-From" : "Michael Simmons",
+        "Date" : "Tue, 14 Nov 2000 08:22:00 -0800 (PST)",
+        "X-To" : "Eric Bass",
+        "Message-ID" : "<6884142.1075854677416.JavaMail.evans@thyme>",
+        "Content-Type" : "text/plain; charset=us-ascii",
+        "Mime-Version" : "1.0"
+    }
+}
+    \end{javascriptcode}
+    \caption{findOne query on the messages collection}
+    \label{lst:findone}
+\end{listing}
+
+As can be seen from the output in Lst. \ref{lst:findone} there can also be nested documents
+within one document. In this case the headers field contains an object with all header fields.
+MongoDB allows querying for nested attributes as well. So in order to find out the percentage of
+replies among all emails we could run the following commands:
+
+\begin{listing}
+    \begin{javascriptcode}
+> nAll = db.messages.count()
+501513
+> nReply = db.messages.find({"headers.Subject": /Re:.*/}).count()
+100195
+> nReply / nAll * 100
+19.978544923062813
+    \end{javascriptcode}
+    \caption{caption}
+    \label{lst:label}
+\end{listing}
 
 \paragraph{Optimizing Queries}
 Can be optimized with indexes and some other tips given in
