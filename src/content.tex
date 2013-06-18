@@ -227,7 +227,7 @@ attributes.\footcite[Cf.][5]{Plugge_2010}
 
 \begin{savenotes} %alloows proper citation marks inside tables
 \begin{table}[ht]
-\begin{tabular*}{0.7\textwidth}{p{0.35\textwidth} p{0.35\textwidth}}
+\begin{tabular*}{0.95\textwidth}{p{0.45\textwidth} p{0.45\textwidth}}
 \toprule
 \textbf{SQL Terms/Concepts} & \textbf{MongoDB Terms/Concept}\\
 \midrule 
@@ -241,7 +241,6 @@ primary key\newline Specify any unique column or column combination as primary
 key.
 		&
 primary key \newline
-
 In MongoDB, the primary key is automatically set to the \_id field.\\
 
 \bottomrule 
@@ -254,10 +253,11 @@ In MongoDB, the primary key is automatically set to the \_id field.\\
 
 
     
-
+\FloatBarrier
 %----------------------------------------------------------------------------
 % Hands on Mongo
 %----------------------------------------------------------------------------
+\clearpage
 \section{Setting up MongoDB}
 \label{sec:setup}
 
@@ -284,6 +284,8 @@ Linux distribution. See \url{http://docs.mongodb.org/manual/installation/}
   \item advanced: distribution among several network nodes
 \end{enumerate}
     
+    
+\newpage
 \section{Using MongoDB}
 \label{sec:usage}
 
@@ -326,12 +328,35 @@ database that has been created during the loading process.
 \subsection{Command Line Interface}
 \label{sec:usage-cli}
 
+The command line interface for MongoDB is called the mongo shell and is the most powerfull
+tool for operating on MongoDB databases.
+The following examples assume that the Enron email corpus has been loaded into the database \textit{enron}.
+In order to start working on this database, type \texttt{use enron}.
 
 \subsubsection{Read}
+Before performing any read operations it is necessary to figure out what collections
+there are in the enron database, that can be read from. This information can be accessed
+via the command \texttt{show collections} as shown in Lst. \ref{lst:show-collections}
+
+\begin{listing}
+    \begin{javascriptcode}
+> show collections
+messages
+system.indexes
+    \end{javascriptcode}
+    \caption{Command to get a list of available collections in the current database}
+    \label{lst:show-collections}
+\end{listing}
 
 \paragraph{Making Queries}
 In the mongo shell, the \texttt{find()} and \texttt{findOne()} can be used to
 query for data.\footcite[Cf.][7]{mongo_crud_manual}
+These queries are performed by calling them on any collection.
+Obtaining all emails from the messages collection is e.g. done by running
+\texttt{db.messages.find()}.
+
+
+\texttt{db.messages.find({"headers.From": "luis.mena@enron.com"}).limit(10).pretty()}
 
 \paragraph{Optimizing Queries}
 Can be optimized with indexes and some other tips given in
@@ -367,6 +392,7 @@ sqq.]{mongo_crud_manual}
 there are UI based admin tools by 3rd party developers\\
 show a small selection of them
 
+\newpage
 \section{Maintaining MongoDB}
 \label{sec:maintenance}
 
