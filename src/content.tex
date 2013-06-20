@@ -357,10 +357,10 @@ Obtaining all emails from the messages collection is e.g. done by running
 
 The syntax of the find command is as follows: \texttt{db.collection.find(
 <query>, <projection> )}\\
-The <query> argument is used for filtering and the <projection> is used to specify
+The \texttt{<query>} argument is used for filtering and the \texttt{<projection>} is used to specify
 or limit the fields that should be returned.
-The projection is hence comparable to the SELECT part of an SQL query and the
-query parameter is combarable to the WHERE clause of an SQL query.
+The projection is hence comparable to the \textit{SELECT} part of a SQL query and the
+query parameter is combarable to the \textit{WHERE} clause of a SQL query.
 
 
 The \texttt{findOne()} method is very similar, however it only returns the first
@@ -404,7 +404,7 @@ all fields from the result except for body.
 As can be seen from the output in Lst. \ref{lst:findone} there can also be nested documents
 within one document. In this case the headers field contains an object with all header fields.
 MongoDB allows querying for nested attributes as well. So in order to find out the percentage of
-replies among all emails we could run the following commands:
+replies among all emails we could run a series of commands as shown in Lst. \ref{lst:query-percent-replies}.
 
 \begin{listing}
     \begin{javascriptcode}
@@ -416,8 +416,34 @@ replies among all emails we could run the following commands:
 19.978544923062813
     \end{javascriptcode}
     \caption{caption}
-    \label{lst:label}
+    \label{lst:query-percent-replies}
 \end{listing}
+
+Similarly it is possible to query for elements which are stored in an array instead of a subdocument.
+
+Besides using regular expressions as demonstrated in Lst. \ref{lst:query-percent-replies} MongoDB
+offers a number of other query selectors for comparisons (see Tab. \ref{tab:query-selectors-compare}).
+
+
+\begin{table}[htbp]
+\begin{tabular*}{\textwidth}{p{0.1\textwidth} p{0.85\textwidth}}
+\toprule
+\textbf{Name} 					& \textbf{Description}\\
+\midrule 
+\$all    & Matches arrays that contain all elements specified in the query. \\
+\$gt     & Matches values that are greater than the value specified in the query.\\
+\$gte    & Matches values that are equal to or greater than the value specified in the query.\\
+\$in     & Matches any of the values that exist in an array specified in the query.\\
+\$lt     & Matches vales that are less than the value specified in the query.\\
+\$lte    & Matches values that are less than or equal to the value specified in the query.\\
+\$ne     & Matches all values that are not equal to the value specified in the query.\\
+\$nin    & Matches values that do not exist in an array specified to the query.\\
+\bottomrule 
+\end{tabular*}
+  \caption{Query selectors for value comparison (taken from \url{http://docs.mongodb.org/manual/reference/operator/#query-selectors})}
+  \label{tab:query-selectors-compare}
+\end{table}
+
 
 \paragraph{Optimizing Queries}
 Can be optimized with indexes and some other tips given in
@@ -432,6 +458,8 @@ Bulk inserts are also possible.\footcite[Cf.][p. 53 et sqq.]{mongo_crud_manual}
 \subsubsection{Update}
 Updates can be done with the \texttt{update()} command and the \texttt{save()}
 command.\footcite[Cf.][p. 75 et. sqq.]{mongo_crud_manual}
+
+
 
 \subsubsection{Delete}
 Delete operations for one or multiple documents can be performed with
