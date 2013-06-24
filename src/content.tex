@@ -202,30 +202,21 @@ a value and deep querying of nested document structures. Using JavaScript
 for its query language, MongoDB supports both simple queries and complex
 mapreduce jobs.''\footcite[][6]{Redmond_2012}
 
-\begin{enumerate}
-  \item noSQL store that belongs to the group of document stores
-  \item Documents are stored as JSON or binary JSON
-  \item development history and some general information
-  \item use cases
-\end{enumerate}
-
-
 MongoDB belongs to the group of document oriented noSQL databases and is written
 in C++. It does not try to be a general purpose database but has been developed
 with the philosophy ``One size does not fit all'' in mind.\footcite[Cf.][3]{Plugge_2010}
 
-MongoDB works with documents instead of tables as opposed to conventional RDBMS.
+\paragraph{Terminology}
+The MongoDB terminology differs to the terms used in RDBMS due to the different
+concepts. MongoDB works with documents instead of tables as opposed to conventional RDBMS.
 A document is a single storage unit and multiple documents can be contained in a
 collection. Documents are stored in BSON format which is a JSON based
 specification.\footcite[Cf.][]{bson_spec}
 
-A design goal of MongoDB is high availability through
-replication.\footcite[Cf.][3]{Plugge_2010}
-MongoDB aims for good horizontal scalability, speed and simplicity. Transaction
-support has been ommitted as a tradeoff in favor of these
-attributes.\footcite[Cf.][5]{Plugge_2010}
+Most terms can roughly be mapped to their SQL dependants. An overview of key terms
+is provided in Tab. \ref{tab:sql-mongo-map}.
 
-\begin{savenotes} %alloows proper citation marks inside tables
+\begin{savenotes} %allows proper citation marks inside tables
 \begin{table}[ht]
 \begin{tabular*}{0.95\textwidth}{p{0.45\textwidth} p{0.45\textwidth}}
 \toprule
@@ -233,24 +224,52 @@ attributes.\footcite[Cf.][5]{Plugge_2010}
 \midrule 
 database & 	database\\
 table 	 &	collection\\
-row 	 &	document or BSON document\\
+row 	 &	document\\
 column 	 &	field\\
 index 	 &	index\\
 table joins &	embedded documents and linking\\
 primary key\newline Specify any unique column or column combination as primary
 key.
 		&
-primary key \newline
+primary key\newline
 In MongoDB, the primary key is automatically set to the \_id field.\\
 
 \bottomrule 
 \end{tabular*}
-  \caption{SQL termn mapped to MongoDB source:
+  \caption{SQL terms mapped to MongoDB source:
   \url{http://docs.mongodb.org/manual/reference/sql-comparison/}}
   \label{tab:sql-mongo-map}
 \end{table}
 \end{savenotes}
 
+\paragraph{Areas of application}
+A design goal of MongoDB is high availability through
+replication.\footcite[Cf.][3]{Plugge_2010}
+MongoDB aims for good horizontal scalability, speed and simplicity. Transaction
+support has been ommitted as a tradeoff in favor of these
+attributes.\footcite[Cf.][5]{Plugge_2010}\\
+MongoDB is hence a good fit for applications that require a fast and highly
+available data store, which is one of the reasons why it is very popular for web
+applications. Due to its document-oriented nature mongo is a good fit for
+hierarical data such as category hierarchies and comments.\\
+In MongoDB comments can be contained in their parent document as a
+sub-collection. Support for threaded comments can be added by embedding comments
+in their parent comment. As a result the whole comment thread can be obtained
+ by simply retrieving the embedded collection of comments from an item.
+In a relational database this could only be achieved by more sophisticated
+queries that require joins.
+
+As opposed to RDBMS, MongoDB does not have fixed formats for the items that
+are to be stored. Differed types of objects with different sets of attributes
+can easily be put into the same collection. \\
+E-Commerce product catalog must have this capability in order to store information
+of various articles. In relational databases this capability could be provided
+via multiple table inheritance\footnote{TODO: do we need to explain this concept?}.
+While this allows flexible structures, it also requires expensive join operations 
+to retrieve all relevant attributes of a product.
+``MongoDB’s dynamic schema means that each document need not conform to the same
+schema. As a result, the document for each product only needs to contain
+attributes relevant to that product.''\footcite[][]{mongo_product_catalog}
 
     
 \FloatBarrier
