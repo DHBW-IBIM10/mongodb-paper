@@ -368,7 +368,7 @@ system.indexes
 \end{listing}
 
 \paragraph{Making Queries}
-In the mongo shell, the \texttt{find()} and \texttt{findOne()} can be used to
+In the mongo shell, the \texttt{find()} and \texttt{findOne()} functions can be used to
 query for data.\footcite[Cf.][7]{mongo_crud_manual}
 These queries are performed by calling them on any collection.
 Obtaining all emails from the messages collection is e.g. done by running
@@ -382,7 +382,7 @@ The projection is hence comparable to the \textit{SELECT} part of a SQL query an
 query parameter is combarable to the \textit{WHERE} clause of a SQL query.
 
 
-The \texttt{findOne()} method is very similar, however it only returns the first
+The \texttt{findOne()} function is very similar, however it only returns the first
 element that matches the query. Lst. \ref{lst:findone} shows the result of the
 findOne query on the messages collection without a query document provided. The
 second argument tells MongoDB to exclude the body field from the result. Setting
@@ -438,10 +438,43 @@ replies among all emails we could run a series of commands as shown in Lst. \ref
     \label{lst:query-percent-replies}
 \end{listing}
 
-Similarly it is possible to query for elements which are stored in an array instead of a subdocument.
+Similarly it is possible to query for values which are stored in an array instead of a subdocument.
+If the array contains sub-documents it is also possible to query for specific fields within the sub-documents.\footcite[Cf.][10]{mongo_crud_manual}
+This is demonstrated in Lst. \ref{lst:array-query}
+
+\begin{listing}
+    \begin{javascriptcode}
+//find documents with exactly this array in the tags attribute
+db.inventory.find( { tags: ['fruit','food','citrus'] } )
+//find documents that contain a 'fruit' element in their tags array
+db.inventory.find( { tags: 'fruit'} )
+//find documents that have 'fruit' as the first element in the tags array
+db.inventory.find( {'tags.0': 'fruit'} )
+//find documents where the memos field contains an array that contains at least one
+//subdocument with the field 'by' with the value 'shipping'
+db.inventory.find( {'memos.by': 'shipping'} )
+    \end{javascriptcode}
+    \caption{Array queries on an inventory collection}
+    \label{lst:array-query}
+\end{listing}
 
 Besides using regular expressions as demonstrated in Lst. \ref{lst:query-percent-replies} MongoDB
 offers a number of other query selectors for comparisons (see Tab. \ref{tab:query-selectors-compare}).
+
+An exemplary query using the greater than (\$gt), less than (\$lt) and or (\$or) operator
+is shown in Lst. \ref{lst:query-operators}.
+This query selects all documents in the inventory collection which have a type attribute with
+a value of 'food' and either have  a quantity attribute with a value above $100$ or a price attribute
+with a value below $9.95$.
+
+\begin{listing}
+    \begin{javascriptcode}
+db.inventory.find( { type:'food', $or:[ { qty:{ $gt:100} },{ price:{ $lt:9.95} } ]} )
+    \end{javascriptcode}
+    \caption{Exemplary usage of query operators\footcite[][9]{mongo_crud_manual}}
+    \label{lst:query-operators}
+\end{listing}
+
 
 
 \begin{table}[htbp]
@@ -468,7 +501,7 @@ offers a number of other query selectors for comparisons (see Tab. \ref{tab:quer
 Can be optimized with indexes and some other tips given in
 iterature.\footcite[Cf.][TODO]{Chodorow_2011_tips}
 
-
+\FloatBarrier
 \subsubsection{Create}
 Documents can be created with the \texttt{insert()} command in the mongo
 shell.\\
