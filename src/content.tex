@@ -536,24 +536,18 @@ by executing \texttt{getIndices()} as shown in Lst. \ref{lst:showIndices}.
 \begin{listing}
     \begin{javascriptcode}
 > db.messages.getIndices()
-[
-    {
+[   {
         "v" : 1,
-        "key" : {
-            "_id" : 1
-        },
+        "key" : { "_id" : 1 },
         "ns" : "enron.messages",
         "name" : "_id_"
     },
     {
         "v" : 1,
-        "key" : {
-            "headers.From" : 1
-        },
+        "key" : { "headers.From" : 1 },
         "ns" : "enron.messages",
         "name" : "headers.From_1"
-    }
-]
+    } ]
     \end{javascriptcode}
     \caption{Showing all indices of the messages collection}
     \label{lst:showIndices}
@@ -602,8 +596,37 @@ show a small selection of them
 
 \subsection{Monitoring}
 \label{sec:maintenance-monitroing}
-Can be done manually via the CLI
-Monitoring tools for automation are included in the default installation
+Monitoring is an elementary part of database administration in order to avoid
+incidents before they happen. MongoDB ships with separate tools for monitoring.
+One of these is \texttt{mongotop} which can be used to get performance information
+on collections level.\footcite[Cf.][]{mongo_monitoring}
+\begin{listing}
+    \begin{bashcode}
+                            ns       total        read       write
+2013-06-25T19:28:48
+                enron.messages      1158ms      1158ms         0ms
+          enron.system.indexes         0ms         0ms         0ms
+       enron.system.namespaces         0ms         0ms         0ms
+            enron.system.users         0ms         0ms         0ms
+             local.startup_log         0ms         0ms         0ms
+          local.system.indexes         0ms         0ms         0ms
+    \end{bashcode}
+    \caption{Output of mongotop}
+    \label{lst:mongotop}
+\end{listing}
+
+Another command line tool for monitoring is \texttt{mongostat}, which provides
+information on a higher level such as number of open connections,
+memory consumption, network traffic and query throughput.\footcite[Cf.][]{mongo_monitoring}
+
+Additionally it is possible to get these information via a web interface.
+``In default configurations the REST interface is accessible on 28017. For
+example, to access the REST interface on a locally running mongod instance:
+http://localhost:28017''\footcite[][]{mongo_monitoring}
+The REST interface is disabled by default and needs to be enabled by setting the
+\texttt{rest} field to \texttt{true} in the configuration file.\footcite[Cf.][]{mongo_conf}
+
+
 
 \subsection{Updating}
 \label{sec:maintenance-updating}
