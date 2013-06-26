@@ -622,11 +622,16 @@ memory consumption, network traffic and query throughput.\footcite[Cf.][]{mongo_
 Additionally it is possible to get these information via a web interface.
 ``In default configurations the REST interface is accessible on 28017. For
 example, to access the REST interface on a locally running mongod instance:
-http://localhost:28017''\footcite[][]{mongo_monitoring}
+\url{http://localhost:28017}''\footcite[][]{mongo_monitoring}
 The REST interface is disabled by default and needs to be enabled by setting the
-\texttt{rest} field to \texttt{true} in the configuration file.\footcite[Cf.][]{mongo_conf}
-
-
+\texttt{rest} field to \texttt{true} in the configuration file.\footcite[Cf.][]{mongo_conf}\\
+It is also possible to get these information from within the mongo shell via commands such as
+\texttt{db.serverStatus()}. Additionally profiling information can be obtained when the
+profiling is enabled. This can be done by setting the profiling level to $1$ or $2$ via
+\texttt{db.setProfilingLevel(<level>)}. When set to $1$, all operations are profiled, when set
+to $2$ only slow operations will be profiled.
+A full list of available commands is available in the online
+documentation.\footnote{See \url{http://docs.mongodb.org/manual/reference/command/\#diagnostic-commands}}
 
 \subsection{Updating}
 \label{sec:maintenance-updating}
