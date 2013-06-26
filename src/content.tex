@@ -285,11 +285,32 @@ attributes relevant to that product.''\footcite[][]{mongo_product_catalog}
 \subsection{Installation}
 \label{sec:installation}
 
-\subsubsection{Windows}
+\paragraph{Windows}
 \label{sec:installation-windows}
-Download and follow install instructions.
+The latest version of MongoDB can be downloaded from \url{http://www.mongodb.org/downloads}.
+After downloading, the archive needs to be extracted, e.g. to \texttt{C:\textbackslash \-mongo\-db-win32-x86\-\_64-[version]}.
+Afterwards the environment needs to be set up by running the following sequence of commands in the
+Windows Command Prompt.
 
-\subsubsection{Linux}
+\begin{listing}
+    \begin{batcode}
+cd \
+:: rename folder
+move C:\mongodb-win32-* C:\mongodb
+:: create folder for data in default location
+md data
+md data\db
+    \end{batcode}
+    \caption{Commands to set up the MongoDB environment on Windows}
+    \label{lst:win-setup}
+\end{listing}
+
+MongoDB can now be started by issuing the command \texttt{C:\textbackslash mongodb\textbackslash\- bin\textbackslash\- mongod.exe}.
+Since version 2 it is also possible to run mongod as a service on Windows.\footcite[Cf.][]{mongo_install_win} Refer
+to the online documentation for instructions on how to do 
+this.\footnote{See \url{http://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/}}
+
+\paragraph{Linux}
 \label{sec:installation-linux}
 Use your favorite package manager.
 Most distributions do not ship the latest version of MongoDB. This paper describes the usage of
