@@ -691,6 +691,48 @@ documentation.\footnote{See \url{http://docs.mongodb.org/manual/reference/comman
 \label{sec:maintenance-updating}
 TODO
 
+\subsection{Security and Authentication}
+\label{sec:maintenance-security}
+It is recommended to run MongoDB in a trusted environment, to make sure that
+only trusted machines may access the MongoDB
+server.\footcite[Cf.][118]{Chodorow_2010}
+If MongoDB is run on a server which is publicly accessible, it should be
+run with the \texttt{--bindip} option to specify a local IP address that MongoDB
+will be bound to (e.g. \texttt{--bindip localhost} to only allow
+connections from an application on the same
+machine).\footcite[Cf.][118]{Chodorow_2010}
+Authentication in MongoDB can be enabled by either starting \texttt{mongod} with the \texttt{--auth} switch or by configuring it in the settings file with the line \texttt{auth = true}.
+Users of a database are stored as documents in the system.users collection
+within this database.\footcite[Cf.][TODO]{mongo_authentication}
+User documents consist of the field ``user" which contains the username,
+a ``readOnly" flag and a ``pwd" field which stores a hash of the
+username and password. Lst. \ref{lst:mongo-auth} shows how one can
+authenticate in the mongo shell and how new users can be added and removed from
+a database.
+
+%TODO: clarify wether users need to be created before setting auth to true
+%TODO: listing is incomplete
+\begin{listing}
+    \begin{javascriptcode}
+> use admin
+switched to db admin
+> db.addUser("root", "abcd");
+{
+"user" : "root",
+"pwd" : "1a0f1c3c3aa1d592f490a2addc559383"
+}
+> use test
+switched to db test
+> db.addUser("test_user", "efgh");
+{
+"user" : "test_user",
+"readOnly" : false,
+"pwd" : "6076b96fc3fe6002c810268702646eec"
+}
+    \end{javascriptcode}
+    \caption{Output of mongotop}
+    \label{lst:mongotop}
+\end{listing}
 
 
 %----------------------------------------------------------------------------
