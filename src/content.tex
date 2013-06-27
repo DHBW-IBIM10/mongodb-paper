@@ -704,10 +704,10 @@ will be bound to (e.g. \texttt{--bindip localhost} to only allow
 connections from an application on the same
 machine).\footcite[Cf.][118]{Chodorow_2010}
 Authentication in MongoDB can be enabled by either starting \texttt{mongod} with the \texttt{--auth} switch or by configuring it in the settings file with the line \texttt{auth = true}.
-Users of a database are stored as documents in the system.users collection
+Users of a database are stored as documents in the \textit{system.users} collection
 within this database.\footcite[Cf.][TODO]{mongo_authentication}
-User documents consist of the field ``user" which contains the username,
-a ``readOnly" flag and a ``pwd" field which stores a hash of the
+User documents consist of a \textit{user} field which contains the username,
+a \textit{readOnly} flag and a \textit{pwd} field which stores a hash of the
 username and password. Lst. \ref{lst:mongo-auth} shows how one can
 authenticate in the mongo shell and how new users can be added and removed from
 a database.
