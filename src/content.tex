@@ -104,7 +104,7 @@ Course: WWI2010I\\
 
 Introduction to NoSQL.
 
-Business drivers that push nosql or big data
+Business drivers that push NoSQL or big data
 \begin{enumerate}
   \item growth of user-driven content and availability of sensors
   \footcite[Cf.][XVII]{Tiwari_2011}
@@ -125,10 +125,10 @@ Business drivers that push nosql or big data
 %SMART - specific, measurable, achievable, relevant, timed
 
 \begin{enumerate}
-  \item Test installation of mongoDB
+  \item Test installation of MongoDB
   \item Introduce basic usage (CRUD + simple analytics)
-  \item Performance tests with large datasets
-  \item Show programmatical usage of mongoDB in a Python web project
+  \item Performance tests with large data-sets
+  \item Show programmatic usage of MongoDB in a Python web project
 \end{enumerate}
 
 \subsection{Methodology and Structure}
@@ -141,13 +141,13 @@ The following sections focus on the usage of MongoDB. Section \ref{sec:setup}
 covers the installation and basic configuration of MongoDB and
 \autoref{sec:usage} shows how to run basic create, read, update and delete
 operations (CRUD) on MongoDB in different environments such as the mongo shell,
-with graphical tools or programmatically via a driver.
-Most examples are based on a publicly available data set consistig of several
-hundret thousand email messages to allow reproducability of exeplary
+with graphical tools or programmatic via a driver.
+Most examples are based on a publicly available data set consisting of several
+hundred thousand email messages to allow reproducability of exemplary
 results.\\
 Section \ref{sec:maintenance} completes the introduction to the topic by
 providing essential information on monitoring and other maintenance related
-concerns. Section \ref{sec:conclusion} finally concludes and gives a thourough
+concerns. Section \ref{sec:conclusion} finally concludes and gives a thorough
 outlook on advanced topics and future developments of MongoDB.
 
 
@@ -165,16 +165,16 @@ outlook on advanced topics and future developments of MongoDB.
 \label{sec:nosql}
 
 \begin{enumerate}
-  \item nosql describes a range of data store technologies that do not have an sql interface
-  \item there are multiple types of nosql data stores, these are briefly introduced in the following sections
+  \item NoSQL describes a range of data store technologies that do not have an SQL interface
+  \item there are multiple types of NoSQL data stores, these are briefly introduced in the following sections
 \end{enumerate}
-Main differences between RDBS and noSQL should be listed to avoid that readers
+Main differences between RDBMS and NoSQL should be listed to avoid that readers
 look at things as if they were conventional databases. they are not.
 
 \paragraph{Key-Value Stores}
 \label{sec:nosql-key-value}
 As the name implies a key-value store maps keys to values in a similar way as a
-map or hashtable would in a high level programming
+map or hash-table would in a high level programming
 language.\footcite[Cf.][4]{Redmond_2012} Such data structures are very efficient
 with an average algorithm running time of big O(1) for accessing data and
 are hence often used for caching of data.\footcite[Cf.][p. 14 et sq.]{Tiwari_2011}
@@ -196,7 +196,7 @@ document.\footcite[Cf.][p. 18 et sq.]{Tiwari_2011}.\\
 Multiple documents form collections which can be queried. Document oriented
 databases do not have a fixed schema and hence exhibit high flexibility.
 
-Document oriented databases are not a new phenomenom as they have been around
+Document oriented databases are not a new phenomenon as they have been around
 for a few decades already. However recently a number of new open source document 
 oriented databases like MongoDB and CouchDB have quickly become popular.\footcite[Cf.][p. 18 et sq.]{Tiwari_2011}
 
@@ -208,7 +208,7 @@ data. They consist of multiple nodes and relationships between these nodes.
 Nodes as well as their relationships can contain additional information in the
 form of key-value pairs.\footcite[Cf.][6]{Redmond_2012}\\
 Graph databases facilitate rapid traversal through graphs by following
-relationships. Well known representatives of this group of noSQL databases are
+relationships. Well known representatives of this group of NoSQL databases are
 Neo4j\footnote{See \url{http://www.neo4j.org/}} and FlockDB\footnote{See
 \url{https://github.com/twitter/flockdb}}.\footcite[Cf.][19]{Tiwari_2011}
 
@@ -224,9 +224,9 @@ next update). This feature makes it attractive to those coming from an RDBMS
 background. It also offers atomic read-write operations such as incrementing
 a value and deep querying of nested document structures. Using JavaScript
 for its query language, MongoDB supports both simple queries and complex
-mapreduce jobs.''\footcite[][6]{Redmond_2012}
+map-reduce jobs.''\footcite[][6]{Redmond_2012}
 
-MongoDB belongs to the group of document oriented noSQL databases and is written
+MongoDB belongs to the group of document oriented NoSQL databases and is written
 in C++. It does not try to be a general purpose database but has been developed
 with the philosophy ``One size does not fit all'' in mind.\footcite[Cf.][3]{Plugge_2010}
 
@@ -278,12 +278,12 @@ In MongoDB, the primary key is automatically set to the \_id field.\\
 A design goal of MongoDB is high availability through
 replication.\footcite[Cf.][3]{Plugge_2010}
 MongoDB aims for good horizontal scalability, speed and simplicity. Transaction
-support has been ommitted as a tradeoff in favor of these
+support has been omitted as a trade-off in favor of these
 attributes.\footcite[Cf.][5]{Plugge_2010}\\
 MongoDB is hence a good fit for applications that require a fast and highly
 available data store, which is one of the reasons why it is very popular for web
 applications. Due to its document-oriented nature mongo is a good fit for
-hierarical data such as category hierarchies and comments.\\
+hierarchical data such as category hierarchies and comments.\\
 In MongoDB comments can be contained in their parent document as a
 sub-collection. Support for threaded comments can be added by embedding comments
 in their parent comment. As a result the whole comment thread can be obtained
@@ -344,7 +344,7 @@ this.\footnote{See \url{http://docs.mongodb.org/manual/tutorial/install-mongodb-
 \label{sec:installation-linux}
 Use your favorite package manager.
 Most distributions do not ship the latest version of MongoDB. This paper describes the usage of
-MongoDB version 2.4 which can be obtained from 10gens own repository if not available in the
+MongoDB version 2.4 which can be obtained from 10gen's own repository if not available in the
 Linux distribution. See \url{http://docs.mongodb.org/manual/installation/}
 
 \subsection{Configuration}
@@ -364,14 +364,14 @@ Linux distribution. See \url{http://docs.mongodb.org/manual/installation/}
 \subsection{Test Environment Setup}
 \label{sec:test-environment}
 
-The following usage scenarios will be based on a publicly available dataset.
-This section describes how to obtain and load this dataset into the previously
+The following usage scenarios will be based on a publicly available data-set.
+This section describes how to obtain and load this data-set into the previously
 installed MongoDB.
 
 The Enron Email Corpus has been ported to MongoDB and can be obtained from
 \url{http://mongodb-enron-email.s3-website-us-east-1.amazonaws.com/}.
-The uncompressed dataset contains approximately 500,000 emails.
-While this is a relatively small dataset it is sufficient for
+The uncompressed data-set contains approximately 500,000 emails.
+While this is a relatively small data-set it is sufficient for
 testing basic features of the database.
 
 Once the archive has been downloaded and unpacked it can be loaded into MongoDB
@@ -433,7 +433,7 @@ The syntax of the find command is as follows: \texttt{db.collection.find(
 The \texttt{<query>} argument is used for filtering and the \texttt{<projection>} is used to specify
 or limit the fields that should be returned.
 The projection is hence comparable to the \textit{SELECT} part of a SQL query and the
-query parameter is combarable to the \textit{WHERE} clause of a SQL query.
+query parameter is comparable to the \textit{WHERE} clause of a SQL query.
 
 
 The \texttt{findOne()} function is very similar, however it only returns the first
@@ -488,12 +488,12 @@ replies among all emails we could run a series of commands as shown in Lst. \ref
 > nReply / nAll * 100
 19.978544923062813
     \end{javascriptcode}
-    \caption[Calculating the percentage of replies]{Calculating the percentage of replies in the meessages collection within the mongo shell}
+    \caption[Calculating the percentage of replies]{Calculating the percentage of replies in the messages collection within the mongo shell}
     \label{lst:query-percent-replies}
 \end{listing}
 
 Similarly it is possible to query for values which are stored in an array
-instead of a subdocument.
+instead of a sub-document.
 If the array contains sub-documents it is also possible to query for specific
 fields within the sub-documents.\footcite[Cf.][10]{mongo_crud_manual} This is
 demonstrated in Lst. \ref{lst:array-query}
@@ -555,7 +555,7 @@ db.inventory.find( { type:'food', $or:[ { qty:{ $gt:100} },{ price:{ $lt:9.95} }
 
 
 \paragraph{Optimizing queries with indices}
-When sorting a dataset MongoDB inspects all documents within the collection
+When sorting a data-set MongoDB inspects all documents within the collection
 to put them in the desired order. In large collections this can be very time
 consuming and results in long response times.
 MongoDB actually refuses to run queries which would take too long to complete as shown in
