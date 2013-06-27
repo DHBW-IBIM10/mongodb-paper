@@ -206,6 +206,12 @@ MongoDB belongs to the group of document oriented noSQL databases and is written
 in C++. It does not try to be a general purpose database but has been developed
 with the philosophy ``One size does not fit all'' in mind.\footcite[Cf.][3]{Plugge_2010}
 
+MongoDB differs from other document-oriented databases in its ability to easily
+scale across several servers. This is possible with replication, where data is 
+copied to other servers to provide redundancy or by sharding where large
+collections are split into pieces to be distributed among all
+nodes.\footcite[Cf.][165]{Redmond_2012}
+
 \paragraph{Terminology}
 The MongoDB terminology differs to the terms used in RDBMS due to the different
 concepts. MongoDB works with documents instead of tables as opposed to conventional RDBMS.
@@ -545,14 +551,17 @@ error: {
 \end{listing}
 
 Just like in other databases indices can be created to improve the efficieny of
-read operations. Indices can be created using the \texttt{ensureIndex({<field1>: <order>, <field2>: <order>,... })}
-function in the mongo shell.\footcite[Cf.][12]{mongo_crud_manual}
-The internal mechanisms behind indexing of MongoDB are beyond the scope of this paper and can be
-read about in the official documentation.\footnote{See \url{http://docs.mongodb.org/manual/core/indexes/}}
-An index for the \textit{From} field in the embedded \textit{headers} document can be created with
-\texttt{db.messages.ensureIndex({"headers.From":1})}, so that the
-query shown in Lst. \ref{lst:no-index} can be executed. It is possible to display all current indices
-by executing \texttt{getIndices()} as shown in Lst. \ref{lst:showIndices}.
+read operations.\footcite[Cf.][152 et sq.]{Redmond_2012} Indices can be created
+using the \texttt{ensureIndex({<field1>: <order>, <field2>: <order>,... })}
+function in the mongo shell.\footcite[Cf.][12]{mongo_crud_manual} 
+The internal mechanisms behind indexing of MongoDB are beyond the scope of this
+paper and can be read about in the official documentation.\footnote{See
+\url{http://docs.mongodb.org/manual/core/indexes/}} An index for the
+\textit{From} field in the embedded \textit{headers} document can be created
+with \texttt{db.messages.ensureIndex({"headers.From":1})}, so that the query
+shown in Lst. \ref{lst:no-index} can be executed. It is possible to display all
+current indices by executing \texttt{getIndices()} as shown in Lst.
+\ref{lst:showIndices}.
 
 \begin{listing}
     \begin{javascriptcode}
@@ -668,9 +677,17 @@ TODO
 \section{Conclusion and Outlook}
 \label{sec:conclusion}
 
+MongoDB strengths are its ability to handle large amounts of data as well as
+large amounts of requests by replication and sharding. Additionally it allows
+very flexible data models due to its schema-less storage model.\\
+In \autoref{sec:usage} it has been shown that MongoDB is easy to use as its
+query language shares many similarities with traditional SQL concepts.\\
 MongoDB should not be seen as an alternative for conventional RDBS but as a
-complementary module in application development.\\
-TODO.
+complementary module in application development. MongoDB encourages
+denormalization of schemas by not having any. This goes along with less
+constraints so that more caution is needed on the application development side.
+
+
 
 
 %----------------------------------------------------------------------------
