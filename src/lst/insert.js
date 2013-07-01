@@ -2,7 +2,7 @@
 use store
 
 // an object to save to the 'books' collection
-var book = {
+> var book = {
   _id : 1,
   title : "MongoDB: The Definitive Guide",
   author : "Kristina Chodorow",
@@ -10,16 +10,16 @@ var book = {
 };
 
 // an array of books to add to the collection
-var bookArr = new Array();
+> var bookArr = new Array();
 
-bookArr.push({
+> bookArr.push({
   _id : 2,
   title : "MongoDB in Action",
   author : "Kyle Banker",
   publisher : "Manning Publications"
 });
 
-bookArr.push({
+> bookArr.push({
   _id : 3,
   title : "MongoDB with Python and Ming",
   author : "Rick Copeland",
@@ -31,7 +31,7 @@ bookArr.push({
 // insert one object:
 // -> SQL:	INSERT INTO TABLE books
 //		VALUES _id=1, title="", author="", publisher=""
-db.books.insert(book);
+> db.books.insert(book);
 
 // bulk insert:
-db.books.insert(bookArr);
+> db.books.insert(bookArr);
