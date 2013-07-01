@@ -148,7 +148,7 @@ slides[12] = {
   _id : 13,
   'Kommandozeilenschnittstelle (CLI)' : [
     'db.stats()',
-    'db.serverStatus()
+    'db.serverStatus()'
   ],
   Werkzeuge : [
     'mongotop',
