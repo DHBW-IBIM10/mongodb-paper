@@ -751,6 +751,15 @@ After installing the gem, it is necessary to configure Mongoid so that it connec
 
 The exact mechanism of loading the configuration is dependent upon which framework (if any) is used by the developer. Proper guidance as to how to proceed can be found in the Mongoid documentation, this includes advanced features such as logging, sharding and replica sets.\footcite[Cf.][]{mongoid_install}
 
+\paragraph{Using Mongoid}
+Listing \ref{lst:mongoid} shows essential usage of the Mongoid ODM. In addition to the highlighted features, Mongoid allows idiomatic usage a´of every MongoDB feature. Thus the resulting feature set and documentation is quite extensive and is recommended to gain a deeper understanding, see \url{http://mongoid.org/en/mongoid/} for more details.
+
+\begin{code}
+	\rubyfile{lst/mongoid.rb}
+	\caption{Examplary Usage of Mongoid}
+	\label{lst:mongoid}
+\end{code}
+
 \subsection{Graphical Interfaces}
 \label{sec:usage-gui}
 there are UI based admin tools by 3rd party developers\\
