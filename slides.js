@@ -73,7 +73,7 @@ slides[4] = {
     },
     {
       Schwächen : [
-	'Keine atomaren Operationen'
+	'Keine nativen Transaktionen'
       ]
     },
     {
