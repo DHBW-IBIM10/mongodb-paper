@@ -1,6 +1,10 @@
 # Latex files
  
 *.aux
+*.bak
+*.app
+*.lol
+*.run.xml
 *.glo
 *.idx
 *.log
