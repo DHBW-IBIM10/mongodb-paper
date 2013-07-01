@@ -79,9 +79,9 @@ Course: WWI2010I\\
 %----------------------------------------------------------------------------
 % List of Figures
 %----------------------------------------------------------------------------
-\listoffigures
-\addcontentsline{toc}{section}{\listfigurename}
-\newpage
+% \listoffigures
+% \addcontentsline{toc}{section}{\listfigurename}
+% \newpage
 
 %----------------------------------------------------------------------------
 % List of Listings
@@ -713,14 +713,74 @@ run with the \texttt{--bindip} option to specify a local IP address that MongoDB
 will be bound to (e.g. \texttt{--bindip localhost} to only allow
 connections from an application on the same
 machine).\footcite[Cf.][118]{Chodorow_2010}
-Authentication in MongoDB can be enabled by either starting \texttt{mongod} with the \texttt{--auth} switch or by configuring it in the settings file with the line \texttt{auth = true}.
+
+Access restrictions can be put in place by using Mongo's authentication system.
+Before using the authentication framework one should
+create an administration user with the commands shown in Lst.
+\ref{lst:mongo-root}. Note that the creation of an administration user
+is only possible when working on localhost with Mongo's localhost authentication
+bypass enabled, which allows full administrative access to local users.
+This setting should be disabled after the creation of an adminsitration user via
+\texttt{mongod --setParameter enableLocalhostAuthBypass=0} during startup or by
+setting this option in the configuration file.
+
+\begin{listing}
+    \begin{javascriptcode}
+//switch to the admin DB
+> db = db.getSiblingDB('admin')
+admin
+// create a superuser with the role "userAdminAnyDatabase"
+> db.addUser({user:"root",pwd:"toor",roles: ["userAdminAnyDatabase"]})
+{
+	"user" : "root",
+	"pwd" : "6a921fa21bbcd22989efecbcb2340d17",
+	"roles" : ["userAdminAnyDatabase"],
+	"_id" : ObjectId("51d16db53ac63115056d6341")
+}
+    \end{javascriptcode}
+    \caption{Creating an administration user}
+    \label{lst:mongo-root}
+\end{listing}
+
 Users of a database are stored as documents in the \textit{system.users} collection
 within this database.\footcite[Cf.][TODO]{mongo_authentication}
 User documents consist of a \textit{user} field which contains the username,
 a \textit{readOnly} flag and a \textit{pwd} field which stores a hash of the
-username and password. Lst. \ref{lst:mongo-auth} shows how one can
+username and password. Lst. \ref{lst:add-user} shows how a user can be added to
+the enron database.
+
+\begin{listing}
+    \begin{javascriptcode}
+> use enron
+switched to db enron
+> db.addUser({user:"mike", pwd:"abc123", roles: ["foo", "bar"]})
+{
+	"user" : "mike",
+	"pwd" : "fbfddbdf3a7a9955a764d02b4c10fd84",
+	"roles" : [
+		"foo",
+		"bar"
+	],
+	"_id" : ObjectId("51d169773ac63115056d6340")
+}
+> db.auth({user:"root",pwd:"test"})
+Error: 18 { code: 18, ok: 0.0, errmsg: "auth fails" }
+0
+> db.auth({user:"mike",pwd:"abc123"})
+1
+    \end{javascriptcode}
+    \caption{Adding a user to the enron database}
+    \label{lst:add-user}
+\end{listing}
+
+
+\ref{lst:mongo-auth} shows how one can
 authenticate in the mongo shell and how new users can be added and removed from
 a database.
+
+Authentication in MongoDB can be enabled by either starting \texttt{mongod} with
+the \texttt{--auth} switch or by configuring it in the settings file with the
+line \texttt{auth = true}.
 
 %TODO: clarify wether users need to be created before setting auth to true
 %TODO: listing is incomplete
