@@ -626,9 +626,12 @@ Bulk inserts are also possible (see listing \ref{lst:insertDocuments}).\footcite
     \label{lst:insertDocuments}
 \end{code}
 
+\FloatBarrier
+\pagebreak
+
 \subsubsection{Update}
 Updates can be done with the \texttt{update()} command and the \texttt{save()}
-command.\footcite[Cf.][p. 75 et. sqq.]{mongo_crud_manual}
+command (see listing \ref{lst:updateDocuments}).\footcite[Cf.][p. 75 et. sqq.]{mongo_crud_manual}
 
 \begin{code}
 	\javascriptfile{lst/update.js}
@@ -686,11 +689,20 @@ command.\footcite[Cf.][p. 75 et. sqq.]{mongo_crud_manual}
 \end{table}
 \end{savenotes}
 
+\FloatBarrier
+
 \subsubsection{Delete}
 Delete operations for one or multiple documents can be performed with
-\texttt{db.collection.remove()}.\footcite[Cf.][p. 83 et.
+\texttt{db.collection.remove()} (see listing \ref{lst:removeDocuments}).\footcite[Cf.][p. 83 et.
 sqq.]{mongo_crud_manual}
 
+\begin{code}
+	\javascriptfile{lst/remove.js}
+	\caption{Removing Documents from a MongoDB Collection}
+	\label{lst:removeDocuments}
+\end{code}
+
+\FloatBarrier
 
 \subsection{Programmatically}
 \label{sec:usage-programmatically}
