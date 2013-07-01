@@ -706,12 +706,26 @@ sqq.]{mongo_crud_manual}
 
 \subsection{Programmatically}
 \label{sec:usage-programmatically}
+In order to access MongoDB programmatically it is necessary to use a \textit{driver} to connect to the database and to translate MongoDB constructs into appropriate ones for your target language. 10gen provides drivers for most languages (with additional ones developed by the community) including but not limited to:\footcite[Cf.][]{mongo_drivers}
 \begin{enumerate}
-  \item Using MongoDB as a module of a application is probably the most common usage scenario
-  \item Interfaces for a large number of programming languages exist
-  \item Some basic operations can be shown in Ruby, Java, Python, JavaScript
+\item C/++/\#
+\item Java
+\item Javascript/Node.js
+\item PHP
+\item Python
+\item Ruby
 \end{enumerate}
 
+This section will show how to use MongoDB programatcally using the Ruby language.
+
+\paragraph{Installing the driver}
+\begin{code}
+	\bashfile{lst/install_mongo_gem.sh}
+	\caption{Installing the mongo gem}
+	\label{lst:installMongoGem}
+\end{code}
+
+The driver allows interacting with MongoDB through Ruby by employing similar constructs to the examples above using the Mongo shell, however most developers use an Object Document Mapper(ODM) to gain higher-level abstractions and modelling functionality.\footcite[Cf.][]{mongo_ruby_driver}
 
 \subsection{Graphical Interfaces}
 \label{sec:usage-gui}
@@ -856,8 +870,12 @@ constraints so that more caution is needed on the application development side.
 \begin{subappendices}
 \renewcommand{\setthesubsection}{\arabic{subsection}:}%
 
-\appsection{Some Source Code}
-\label{apx:placeholder}
+\appsection{Overview of the Mongoid Configuration File 'mongoid.yml'}
+\label{apx:mongoid}
+\begin{code}
+	\rubyfile{lst/mongoid.yml}
+	\caption{Example mongoid.yml}
+\end{code}
 
 % close the appendices environment
 \end{subappendices}
