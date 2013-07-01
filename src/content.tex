@@ -250,7 +250,7 @@ A document is a single storage unit and multiple documents can be contained in a
 collection. Documents are stored in BSON format which is a JSON based
 specification.\footcite[Cf.][]{bson_spec}
 
-Most terms can roughly be mapped to their SQL dependants. An overview of key terms
+Most terms can roughly be mapped to their SQL counterpart. An overview of key terms
 is provided in Tab. \ref{tab:sql-mongo-map}.
 
  %allows proper citation marks inside tables
@@ -416,7 +416,7 @@ database that has been created during the loading process.
 \subsection{Command Line Interface}
 \label{sec:usage-cli}
 
-The command line interface for MongoDB is called the mongo shell and is the most powerfull
+The command line interface for MongoDB is called the mongo shell and is the most powerful
 tool for operating on MongoDB databases. The shell language is JavaScript, so that own
 functions and variables can be declared within the shell.
 The following examples assume that the Enron email corpus has been loaded into the database \textit{enron}.
@@ -724,13 +724,13 @@ In order to access MongoDB programmatically it is necessary to use a \textit{dri
 \begin{enumerate}
 \item C/++/\#
 \item Java
-\item Javascript/Node.js
+\item JavaScript/Node.js
 \item PHP
 \item Python
 \item Ruby
 \end{enumerate}
 
-This section will show how to use MongoDB programatcally using the Ruby language.
+This section will show how to use MongoDB programmatically using the Ruby language.
 
 \paragraph{Installing the driver}
 \begin{code}
@@ -739,7 +739,7 @@ This section will show how to use MongoDB programatcally using the Ruby language
 	\label{lst:installMongoGem}
 \end{code}
 
-The driver allows interacting with MongoDB through Ruby by employing similar constructs to the examples above using the Mongo shell, however most developers use an Object Document Mapper(ODM) to gain higher-level abstractions and modelling functionality.\footcite[Cf.][]{mongo_ruby_driver} This paper will focus on Mongoid, one of the most popular ODMs.
+The driver allows interacting with MongoDB through Ruby by employing similar constructs to the examples above using the Mongo shell, however most developers use an Object Document Mapper(ODM) to gain higher-level abstractions and modeling functionality.\footcite[Cf.][]{mongo_ruby_driver} This paper will focus on Mongoid, one of the most popular ODMs.
 
 \paragraph{Installing Mongoid}
 \begin{code}
@@ -769,7 +769,7 @@ recommended to gain a deeper understanding, see
 
 \begin{code}
 	\rubyfile{lst/mongoid.rb}
-	\caption{Examplary Usage of Mongoid}
+	\caption{Exemplary Usage of Mongoid}
 	\label{lst:mongoid}
 \end{code}
 
@@ -833,13 +833,13 @@ will be bound to (e.g. \texttt{--bindip localhost} to only allow
 connections from an application on the same
 machine).\footcite[Cf.][118]{Chodorow_2010}
 
-Access restrictions can be put in place by using Mongo's authentication system.
+Access restrictions can be put in place by using MongoDB's authentication system.
 Before using the authentication framework one should
 create an administration user with the commands shown in Lst.
 \ref{lst:mongo-root}.\footcite[Cf.][]{mongo_adminuser} Note that the creation of
-an administration user is only possible when working on localhost with Mongo's localhost authentication
+an administration user is only possible when working on localhost with MongoDB's localhost authentication
 bypass enabled, which allows full administrative access to local users.
-This setting should be disabled after the creation of an adminsitration user via
+This setting should be disabled after the creation of an administration user via
 \texttt{mongod --setParameter enableLocalhostAuthBypass=0} during startup or by
 setting this option in the configuration file.
 
