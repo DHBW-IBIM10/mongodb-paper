@@ -16,7 +16,7 @@
 // -> SQL:	ALTER TABLE books
 //		ADD price FLOAT
 //		ADD currency VARCHAR(3)
-db.books.update(
+> db.books.update(
    {},
    { $set: {
              price: 9.99,
