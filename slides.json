@@ -27,7 +27,11 @@ slides[1] = {
     'Definitionen',
     'Konzepte: RDBMS vs. MongoDB',
     'Was ist MongoDB?',
-    'Use Cases'
+    'Nutzungsszenarien',
+    'Installation & Konfiguration',
+    'CRUD Operationen',
+    'Monitoring',
+    'Ressource'
   ]
 }
 
@@ -160,7 +164,7 @@ slides[12] = {
 
 slides[13] = {
   _id : 14,
-  Titel : 'Fragen?',
+  Titel : 'Ressourcen',
   Antworten : [
     'db.help() in der Mongo-Kommandozeile eingeben',
     'man mongo',
@@ -170,8 +174,8 @@ slides[13] = {
 
 slides[14] = {
   _id : 15,
-  Titel : 'folien[-1]',
-  Botschaft : 'Vielen Dank für Ihre Ausmerksamkeit!',
+  Titel : 'präsentation[-1]',
+  Botschaft : 'Vielen Dank für Ihre Aufmerksamkeit!',
   Verabschiedung : 'Wir wünschen Ihnen einen schönen Tag.'
 }
 
