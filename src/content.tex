@@ -636,6 +636,56 @@ command.\footcite[Cf.][p. 75 et. sqq.]{mongo_crud_manual}
 	\label{lst:updateDocuments}
 \end{code}
 
+\begin{savenotes}
+\begin{table}[htbp]
+\begin{tabular*}{\textwidth}{p{0.2\textwidth} p{0.85\textwidth}}
+\toprule
+	\textbf{Name} 					& \textbf{Description}\\
+	\midrule 
+	\$inc			& Increments the value of the field by the specified amount.\\
+	\$rename		& Renames a field.\\
+	\$setOnInsert	& Sets the value of a field upon documentation creation during an upsert. Has no effect on update operations that modify existing documents.\\
+	\$set			& Sets the value of a field in an existing document.\\
+	\$unset			& Removes the specified field from an existing document.\\
+\bottomrule 
+\end{tabular*}
+  \caption[]{Field Update Operators\footcite[][]{mongo_update}}
+  \label{tab:query-selectors-compare}
+\end{table}
+\end{savenotes}
+
+\begin{savenotes}
+\begin{table}[htbp]
+\begin{tabular*}{\textwidth}{p{0.2\textwidth} p{0.85\textwidth}}
+\toprule
+	\textbf{Name} 					& \textbf{Description}\\
+	\midrule 
+	\midrule
+	\textbf{Operators} & \\
+	\midrule 
+	\midrule
+	\$			&	Acts as a placeholder to update the first element that matches the query condition in an update.\\
+	\$addToSet	&	Adds elements to an existing array only if they do not already exist in the set.\\
+	\$pop		&	Removes the first or last item of an array.\\
+	\$pullAll	&	Removes multiple values from an array.\\
+	\$pull		&	Removes items from an array that match a query statement.\\
+	\$pushAll	&	Deprecated. Adds several items to an array.\\
+	\$push		&	Adds an item to an array.\\
+	\midrule
+	\midrule	
+	\textbf{Modifiers} & \\
+	\midrule
+	\midrule
+	\$each		&	Modifies the \$push and \$addToSet operators to append multiple items for array updates.\\
+	\$slice		&	Modifies the \$push operator to limit the size of updated arrays.\\
+	\$sort		&	Modifies the \$push operator to reorder documents stored in an array.\\	
+\bottomrule 
+\end{tabular*}
+  \caption[]{Array Update Operators\footcite[][]{mongo_update}}
+  \label{tab:query-selectors-compare}
+\end{table}
+\end{savenotes}
+
 \subsubsection{Delete}
 Delete operations for one or multiple documents can be performed with
 \texttt{db.collection.remove()}.\footcite[Cf.][p. 83 et.
