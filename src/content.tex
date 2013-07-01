@@ -77,13 +77,6 @@ Course: WWI2010I\\
 
 
 %----------------------------------------------------------------------------
-% List of Figures
-%----------------------------------------------------------------------------
-\listoffigures
-\addcontentsline{toc}{section}{\listfigurename}
-\newpage
-
-%----------------------------------------------------------------------------
 % List of Listings
 %----------------------------------------------------------------------------
 %\lstlistoflistings
@@ -963,6 +956,15 @@ before considering the usage of MongoDB in production.
 \begin{subappendices}
 \renewcommand{\setthesubsection}{\arabic{subsection}:}%
 
+\appsection{MongoDB Configuration File}
+\label{apx:mongo-conf}
+
+\begin{code}
+\inifile{lst/mongod.conf}
+\caption{Sample MongoDB configuration file}
+\end{code}
+
+\newpage
 \appsection{Overview of the Mongoid Configuration File 'mongoid.yml'}
 \label{apx:mongoid}
 \begin{code}
