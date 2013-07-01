@@ -2,6 +2,7 @@
  
 *.aux
 *.bak
+*.bcf
 *.app
 *.lol
 *.run.xml
