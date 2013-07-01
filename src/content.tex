@@ -106,8 +106,6 @@ Course: WWI2010I\\
 
 Introduction to NoSQL.
 
-
-
 Business drivers that push NoSQL or big data
 \begin{enumerate}
   \item growth of user-driven content and availability of sensors
@@ -115,13 +113,7 @@ Business drivers that push NoSQL or big data
   \item data is increasingly becoming semi-structured so that upfront schema
   definition commonly needed in RDBMS gets
   challenging\footcite[Cf.][XVII]{Tiwari_2011}
-  \item Influence by the growth of the web, learning from large scale
-  applications lead to new application patterns and
-  software\footcite[Cf.][VII]{Warden_2011}
-  \item Availability of cheap hardware allows access to large scale data
-  processing for a broader audiece. High prices for professional data software
-  motivate this broader audience to turn to open source
-  alternatives.\footcite[Cf.][VII]{Warden_2011}
+  \item 
 \end{enumerate}
 
 % These\footcite[Cf.][22]{Warden_2011} are\footcite[Cf.][23]{Tiwari_2011} just some
@@ -628,21 +620,21 @@ Documents can be created with the \texttt{insert()} command in the mongo
 shell.\\
 Bulk inserts are also possible (see listing \ref{lst:insertDocuments}).\footcite[Cf.][p. 53 et sqq.]{mongo_crud_manual}
 
-\begin{listing}[H]
+\begin{code}
     \javascriptfils{lst/insert.js}
     \caption{(Bulk) Insertion of Documents}
     \label{lst:insertDocuments}
-\end{listing}
+\end{code}
 
 \subsubsection{Update}
 Updates can be done with the \texttt{update()} command and the \texttt{save()}
 command.\footcite[Cf.][p. 75 et. sqq.]{mongo_crud_manual}
 
-\begin{listing}[H]
+\begin{code}
 	\javascriptfile{lst/update.js}
 	\caption{Updating MongoDB Collections}
 	\label{lst:updateDocuments}
-\end{listing}
+\end{code}
 
 \subsubsection{Delete}
 Delete operations for one or multiple documents can be performed with
@@ -773,16 +765,7 @@ complementary module in application development. MongoDB encourages
 denormalization of schemas by not having any. This goes along with less
 constraints so that more caution is needed on the application development side.
 
-Outlook: Advanced features of MongoDB that were not covered:
-\begin{itemize}
-  \item Auto-sharding
-  \item Geospatial functionality
-  \item Designing storage layouts
-  \item Optimization techniques
-  \item Deployment topics: clustering, hardware
-  \item Writing own map-reduce jobs
-  \item \ldots
-\end{itemize}
+
 
 
 %----------------------------------------------------------------------------
