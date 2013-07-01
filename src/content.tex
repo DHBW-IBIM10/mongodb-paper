@@ -519,7 +519,7 @@ db.inventory.find( {'memos.by': 'shipping'} )
 Besides using regular expressions as demonstrated in Lst. \ref{lst:query-percent-replies} MongoDB
 offers a number of other query selectors for comparisons (see Tab. \ref{tab:query-selectors-compare}).
 
-An exemplary query using the greater than (\$gt), less than (\$lt) and or (\$or) operator
+An exemplary query using the greater than ($gt), less than ($lt) and or ($or) operator
 is shown in Lst. \ref{lst:query-operators}.
 This query selects all documents in the inventory collection which have a type attribute with
 a value of 'food' and either have  a quantity attribute with a value above $100$ or a price attribute
@@ -618,13 +618,23 @@ data and restructuring document formats and are described in detail in
 \subsubsection{Create}
 Documents can be created with the \texttt{insert()} command in the mongo
 shell.\\
-Bulk inserts are also possible.\footcite[Cf.][p. 53 et sqq.]{mongo_crud_manual}
+Bulk inserts are also possible (see listing \ref{lst:insertDocuments}).\footcite[Cf.][p. 53 et sqq.]{mongo_crud_manual}
+
+\begin{listing}[H]
+    \javascriptfils{lst/insert.js}
+    \caption{(Bulk) Insertion of Documents}
+    \label{lst:insertDocuments}
+\end{listing}
 
 \subsubsection{Update}
 Updates can be done with the \texttt{update()} command and the \texttt{save()}
 command.\footcite[Cf.][p. 75 et. sqq.]{mongo_crud_manual}
 
-
+\begin{listing}[H]
+	\javascriptfile{lst/update.js}
+	\caption{Updating MongoDB Collections}
+	\label{lst:updateDocuments}
+\end{listing}
 
 \subsubsection{Delete}
 Delete operations for one or multiple documents can be performed with
