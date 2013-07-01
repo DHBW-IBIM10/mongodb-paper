@@ -141,7 +141,7 @@ The following sections focus on the usage of MongoDB. Section \ref{sec:setup}
 covers the installation and basic configuration of MongoDB and
 \autoref{sec:usage} shows how to run basic create, read, update and delete
 operations (CRUD) on MongoDB in different environments such as the mongo shell,
-with graphical tools or programmatic via a driver.
+with graphical tools or programmatically via a driver.
 Most examples are based on a publicly available data set consisting of several
 hundred thousand email messages to allow reproducability of exemplary
 results.\\
@@ -164,12 +164,9 @@ outlook on advanced topics and future developments of MongoDB.
 \subsection{NoSQL Databases}
 \label{sec:nosql}
 
-\begin{enumerate}
-  \item NoSQL describes a range of data store technologies that do not have an SQL interface
-  \item there are multiple types of NoSQL data stores, these are briefly introduced in the following sections
-\end{enumerate}
-Main differences between RDBMS and NoSQL should be listed to avoid that readers
-look at things as if they were conventional databases. they are not.
+NoSQL describes a range of data-store technologies that do not have an SQL
+interface. There are multiple types of NoSQL data stores, these are briefly
+introduced in the following sections.
 
 \paragraph{Key-Value Stores}
 \label{sec:nosql-key-value}
@@ -237,14 +234,14 @@ collections are split into pieces to be distributed among all
 nodes.\footcite[Cf.][165]{Redmond_2012}
 
 \paragraph{Terminology}
-The MongoDB terminology differs to the terms used in RDBMS due to the different
-concepts. MongoDB works with documents instead of tables as opposed to conventional RDBMS.
+The MongoDB terminology differs from the terms used in RDBMS due to the
+different concepts. MongoDB works with documents instead of tables as opposed to conventional RDBMS.
 A document is a single storage unit and multiple documents can be contained in a
 collection. Documents are stored in BSON format which is a JSON based
 specification.\footcite[Cf.][]{bson_spec}
 
-Most terms can roughly be mapped to their SQL counterpart. An overview of key terms
-is provided in Tab. \ref{tab:sql-mongo-map}.
+Most terms can roughly be mapped to their SQL counterparts. An overview of key
+terms is provided in Tab. \ref{tab:sql-mongo-map}.
 
  %allows proper citation marks inside tables
 \begin{table}[ht]
@@ -282,7 +279,7 @@ support has been omitted as a trade-off in favor of these
 attributes.\footcite[Cf.][5]{Plugge_2010}\\
 MongoDB is hence a good fit for applications that require a fast and highly
 available data store, which is one of the reasons why it is very popular for web
-applications. Due to its document-oriented nature mongo is a good fit for
+applications. Due to its document-oriented nature MongoDB is a good fit for
 hierarchical data such as category hierarchies and comments.\\
 In MongoDB comments can be contained in their parent document as a
 sub-collection. Support for threaded comments can be added by embedding comments
@@ -294,9 +291,9 @@ queries that require joins.
 As opposed to RDBMS, MongoDB does not have fixed formats for the items that
 are to be stored. Differed types of objects with different sets of attributes
 can easily be put into the same collection. \\
-E-Commerce product catalog must have this capability in order to store information
-of various articles. In relational databases this capability could be provided
-via multiple table inheritance\footnote{TODO: do we need to explain this concept?}.
+E-Commerce product catalogs must have this capability in order to store
+information of various articles. In relational databases this capability could be provided
+via multiple table inheritance.
 While this allows flexible structures, it also requires expensive join operations 
 to retrieve all relevant attributes of a product.
 ``MongoDB’s dynamic schema means that each document need not conform to the same
@@ -342,7 +339,7 @@ this.\footnote{See \url{http://docs.mongodb.org/manual/tutorial/install-mongodb-
 
 \paragraph{Linux}
 \label{sec:installation-linux}
-Use your favorite package manager.
+On Linux MongoDB can be installed via the integrated package manager.
 Most distributions do not ship the latest version of MongoDB. This paper describes the usage of
 MongoDB version 2.4 which can be obtained from 10gen's own repository if not available in the
 Linux distribution. See \url{http://docs.mongodb.org/manual/installation/}
@@ -398,7 +395,7 @@ by using the command line tool
     \label{lst:load-enron}
 \end{listing}
 
-Note that the loading process requires a running instance of the mongo server.
+Note that the loading process requires a running instance of the MongoDB server.
 Verify that the import was successful by opening the mongo shell and typing
 \texttt{show dbs}.
 The output should contain a row with \texttt{enron 3.9521484375GB}\footnote{The
@@ -447,10 +444,10 @@ query parameter is comparable to the \textit{WHERE} clause of a SQL query.
 
 The \texttt{findOne()} function is very similar, however it only returns the first
 element that matches the query. Lst. \ref{lst:findone} shows the result of the
-findOne query on the messages collection without a query document provided. The
-second argument tells MongoDB to exclude the body field from the result. Setting
+\texttt{findOne} query on the messages collection without a query document provided. The
+second argument tells MongoDB to exclude the \textit{body} field from the result. Setting
 the projection object to \texttt{\{"subject":1\}} would tell MongoDB to exclude
-all fields from the result except for body.
+all fields from the result except for \textit{body}.
 
 \begin{listing}
     \begin{javascriptcode}
@@ -479,7 +476,7 @@ all fields from the result except for body.
     }
 }
     \end{javascriptcode}
-    \caption{findOne query on the messages collection}
+    \caption{\texttt{findOne} query on the messages collection}
     \label{lst:findone}
 \end{listing}
 
@@ -713,7 +710,11 @@ sqq.]{mongo_crud_manual}
 
 \subsection{Programmatically}
 \label{sec:usage-programmatically}
-In order to access MongoDB programmatically it is necessary to use a \textit{driver} to connect to the database and to translate MongoDB constructs into appropriate ones for your target language. 10gen provides drivers for most languages (with additional ones developed by the community) including but not limited to:\footcite[Cf.][]{mongo_drivers}
+In order to access MongoDB programmatically it is necessary to use a
+\textit{driver} to connect to the database and to translate MongoDB constructs
+into appropriate ones for your target language. 10gen provides drivers for most
+languages (with additional ones developed by the community) including but not
+limited to:\footcite[Cf.][]{mongo_drivers}
 \begin{enumerate}
 \item C/++/\#
 \item Java
@@ -732,7 +733,11 @@ This section will show how to use MongoDB programmatically using the Ruby langua
 	\label{lst:installMongoGem}
 \end{code}
 
-The driver allows interacting with MongoDB through Ruby by employing similar constructs to the examples above using the Mongo shell, however most developers use an Object Document Mapper(ODM) to gain higher-level abstractions and modeling functionality.\footcite[Cf.][]{mongo_ruby_driver} This paper will focus on Mongoid, one of the most popular ODMs.
+The driver allows interacting with MongoDB through Ruby by employing similar
+constructs to the examples above using the Mongo shell, however most developers
+use an Object Document Mapper (ODM) to gain higher-level abstractions and
+modeling functionality.\footcite[Cf.][]{mongo_ruby_driver} This paper will focus
+on Mongoid, one of the most popular ODMs.
 
 \paragraph{Installing Mongoid}
 \begin{code}
@@ -766,10 +771,6 @@ recommended to gain a deeper understanding, see
 	\label{lst:mongoid}
 \end{code}
 
-\subsection{Graphical Interfaces}
-\label{sec:usage-gui}
-there are UI based admin tools by 3rd party developers\\
-show a small selection of them
 
 \newpage
 \section{Maintaining MongoDB}
@@ -803,7 +804,7 @@ memory consumption, network traffic and query throughput.\footcite[Cf.][]{mongo_
 Additionally it is possible to get these information via a web interface.
 ``In default configurations the REST interface is accessible on 28017. For
 example, to access the REST interface on a locally running mongod instance:
-\url{http://localhost:28017}''\footcite[][]{mongo_monitoring}
+\url{http://localhost:28017}''\footcite[][]{mongo_monitoring}.
 The REST interface is disabled by default and needs to be enabled by setting the
 \texttt{rest} field to \texttt{true} in the configuration file.\footcite[Cf.][]{mongo_conf}\\
 It is also possible to get these information from within the mongo shell via commands such as
@@ -911,12 +912,12 @@ system.users
 \section{Conclusion and Outlook}
 \label{sec:conclusion}
 
-MongoDB strengths are its ability to handle large amounts of data as well as
+MongoDB's strengths are its ability to handle large amounts of data as well as
 large amounts of requests by replication and sharding. Additionally it allows
 very flexible data models due to its schema-less storage model.\\
 In \autoref{sec:usage} it has been shown that MongoDB is easy to use as its
 query language shares many similarities with traditional SQL concepts.\\
-MongoDB should not be seen as an alternative for conventional RDBS but as a
+MongoDB should not be seen as an alternative for conventional RDBMS but as a
 complementary module in application development. MongoDB encourages
 denormalization of schemas by not having any. This goes along with less
 constraints so that more caution is needed on the application development side.
