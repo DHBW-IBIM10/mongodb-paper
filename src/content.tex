@@ -104,28 +104,26 @@ Course: WWI2010I\\
 \section{Introduction}
 \label{sec:introduction}
 
-Introduction to NoSQL.
-
-Business drivers that push NoSQL or big data
-\begin{enumerate}
-  \item growth of user-driven content and availability of sensors
-  \footcite[Cf.][XVII]{Tiwari_2011}
-  \item data is increasingly becoming semi-structured so that upfront schema
-  definition commonly needed in RDBMS gets
-  challenging\footcite[Cf.][XVII]{Tiwari_2011}
-  \item Influence by the growth of the web, learning from large scale
-  applications lead to new application patterns and
-  software\footcite[Cf.][VII]{Warden_2011}
-  \item Availability of cheap hardware allows access to large scale data
-  processing for a broader audiece. High prices for professional data software
-  motivate this broader audience to turn to open source
-  alternatives.\footcite[Cf.][VII]{Warden_2011}
-\end{enumerate}
-
-% These\footcite[Cf.][22]{Warden_2011} are\footcite[Cf.][23]{Tiwari_2011} just some
-% dummy\footcite[Cf.][34]{Redmond_2012} references\footcite[][]{Chodorow_2011_tips}
-% to test\footcite[Cf.][44]{Chodorow_2011_scaling} the bibliography\footcite[Cf.][44]{Ohiggins_2011}
-% environement.\footcite[Cf.][]{mongo_manual}
+The recent growth of user-driven content as well as the availability of sensors
+are accounting for huge amounts of growing data which are becoming increasingly
+less structured. Handling this semi-structured data has introduced new
+challenges for classical processing tools such as relational database management
+systems because upfront schema definitions are no longer practical in this
+environment.\footcite[Cf.][XVII]{Tiwari_2011} A number of data stores have
+evolved that address specific issues related to the processing of big data.
+These storage systems, commonly subsumed under the term NoSQL have become
+increasingly popular in web applications that need to operate reliably under
+extreme load in near real-time.
+These web applications have influenced other appplication areas so that new
+application patterns were adapted and resulted in new software products suited
+for these patterns.\footcite[Cf.][VII]{Warden_2011} Many of these products are
+open source and freely available for anyone to use.
+MongoDB, which is a document oriented database, is one of these open source
+applications that has become very popular over the past years.
+A reason for the high popularity is the availability of cheap hardware, which
+allows access to large scale data processing for a broad audiece.
+High prices for professional data software are a strong motivater to turn to
+open source alternatives such as MongoDB.\footcite[Cf.][VII]{Warden_2011}
 
 
 \subsection{Objectives}
@@ -534,8 +532,8 @@ db.inventory.find( {'memos.by': 'shipping'} )
 Besides using regular expressions as demonstrated in Lst. \ref{lst:query-percent-replies} MongoDB
 offers a number of other query selectors for comparisons (see Tab. \ref{tab:query-selectors-compare}).
 
-An exemplary query using the greater than ($gt), less than ($lt) and or ($or) operator
-is shown in Lst. \ref{lst:query-operators}.
+An exemplary query using the greater than (\$gt), less than (\$lt) and or (\$or)
+operator is shown in Lst. \ref{lst:query-operators}.
 This query selects all documents in the inventory collection which have a type attribute with
 a value of 'food' and either have  a quantity attribute with a value above $100$ or a price attribute
 with a value below $9.95$.
