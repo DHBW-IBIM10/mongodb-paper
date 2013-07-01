@@ -113,7 +113,13 @@ Business drivers that push NoSQL or big data
   \item data is increasingly becoming semi-structured so that upfront schema
   definition commonly needed in RDBMS gets
   challenging\footcite[Cf.][XVII]{Tiwari_2011}
-  \item 
+  \item Influence by the growth of the web, learning from large scale
+  applications lead to new application patterns and
+  software\footcite[Cf.][VII]{Warden_2011}
+  \item Availability of cheap hardware allows access to large scale data
+  processing for a broader audiece. High prices for professional data software
+  motivate this broader audience to turn to open source
+  alternatives.\footcite[Cf.][VII]{Warden_2011}
 \end{enumerate}
 
 % These\footcite[Cf.][22]{Warden_2011} are\footcite[Cf.][23]{Tiwari_2011} just some
@@ -354,10 +360,19 @@ Linux distribution. See \url{http://docs.mongodb.org/manual/installation/}
 
 There are two configuration interfaces for MongoDB: The command line and the
 configuration file.
-When installed on Linux, MongoDB comes with a default configuration file at
+When installed on Linux, MongoDB comes with a default configuration file under
 \texttt{/etc/mongodb.conf} which is shown in appendix \ref{apx:mongo-conf} for
-convenience.
-    
+convenience.\footcite[Cf.][]{mongo_config} This file will be used automatically
+when mongod is run as a service, but needs to be specified explicitly when
+starting mongod via the \texttt{mongod} command (\texttt{mongod -f
+/etc/mongod.conf}).\\
+In order to start MongoDB with a different data storage path on port $20000$,
+the following command could be issued:  \texttt{mongod -dbpath /media/mongodisk/data
+-port 20000}.
+Additional options are available as documented in the manual.\footnote{See
+\url{http://docs.mongodb.org/manual/administration/configuration/}} Section
+\ref{sec:maintenance-security} also shows some security related configurations.
+
     
 \newpage
 \section{Using MongoDB}
@@ -848,30 +863,6 @@ system.users
     \label{lst:add-user}
 \end{listing}
 
-
-%TODO: clarify wether users need to be created before setting auth to true
-%TODO: listing is incomplete
-\begin{listing}
-    \begin{javascriptcode}
-> use admin
-switched to db admin
-> db.addUser("root", "abcd");
-{
-"user" : "root",
-"pwd" : "1a0f1c3c3aa1d592f490a2addc559383"
-}
-> use test
-switched to db test
-> db.addUser("test_user", "efgh");
-{
-"user" : "test_user",
-"readOnly" : false,
-"pwd" : "6076b96fc3fe6002c810268702646eec"
-}
-    \end{javascriptcode}
-    \caption{User administration in the mongo shell}
-    \label{lst:mongo-auth}
-\end{listing}
 
 \FloatBarrier
 %----------------------------------------------------------------------------
