@@ -29,6 +29,8 @@ bookArr.push({
 // continue adding objects to the array
 
 // insert one object:
+// -> SQL:	INSERT INTO TABLE books
+//		VALUES _id=1, title="", author="", publisher=""
 db.books.insert(book);
 
 // bulk insert:
