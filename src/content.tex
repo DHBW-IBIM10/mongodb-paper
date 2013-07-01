@@ -352,11 +352,11 @@ Linux distribution. See \url{http://docs.mongodb.org/manual/installation/}
 \subsection{Configuration}
 \label{sec:configuration}
 
-\begin{enumerate}
-  \item basic configuration of the service (ports, memory usage, etc)
-  \item advanced: sharding, performance optimization, indexing
-  \item advanced: distribution among several network nodes
-\end{enumerate}
+There are two configuration interfaces for MongoDB: The command line and the
+configuration file.
+When installed on Linux, MongoDB comes with a default configuration file at
+\texttt{/etc/mongodb.conf} which is shown in appendix \ref{apx:mongo-conf} for
+convenience.
     
     
 \newpage
@@ -764,6 +764,7 @@ documentation.\footnote{See \url{http://docs.mongodb.org/manual/reference/comman
 
 \subsection{Security and Authentication}
 \label{sec:maintenance-security}
+\FloatBarrier
 It is recommended to run MongoDB in a trusted environment, to make sure that
 only trusted machines may access the MongoDB
 server.\footcite[Cf.][118]{Chodorow_2010}
@@ -872,7 +873,7 @@ switched to db test
     \label{lst:mongo-auth}
 \end{listing}
 
-
+\FloatBarrier
 %----------------------------------------------------------------------------
 % Closing
 %----------------------------------------------------------------------------
@@ -919,6 +920,14 @@ constraints so that more caution is needed on the application development side.
 %subsections of appendix
 \begin{subappendices}
 \renewcommand{\setthesubsection}{\arabic{subsection}:}%
+
+\appsection{MongoDB Configuration File}
+\label{apx:mongo-conf}
+
+\begin{code}
+\inifile{lst/mongod.conf}
+\caption{Sample MongoDB configuration file}
+\end{code}
 
 \appsection{Some Source Code}
 \label{apx:placeholder}
