@@ -11,7 +11,7 @@ slides[0] = {
       Name : 'Rocco Schulz',
       Firma : 'IBM',
       Studiengang : 'IBIM 2010',
-      Kontakt : 'rocco@is-gr8.com'
+      Kontakt : 'rocco@is-gr8.com'
     }, {
       Name : 'Robert Wawrzyniak',
       Firma : 'IBḾ',
@@ -150,6 +150,7 @@ slides[11] = {
 
 slides[12] = {
   _id : 13,
+  Titel : 'Überwachung'
   'Kommandozeilenschnittstelle (CLI)' : [
     'db.stats()',
     'db.serverStatus()'
