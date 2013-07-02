@@ -77,7 +77,7 @@ slides[4] = {
       ]
     },
     {
-      Philosophie : 'One size does not fit everyone.'
+      Philosophie : 'One size does not fit all.'
     }
   ]
 }
@@ -150,7 +150,7 @@ slides[11] = {
 
 slides[12] = {
   _id : 13,
-  Titel : 'Überwachung'
+  Titel : 'Überwachung',
   'Kommandozeilenschnittstelle (CLI)' : [
     'db.stats()',
     'db.serverStatus()'
@@ -180,4 +180,4 @@ slides[14] = {
   Verabschiedung : 'Wir wünschen Ihnen einen schönen Tag.'
 }
 
-db.slides.insert(slides)
+db.folien.insert(slides)
